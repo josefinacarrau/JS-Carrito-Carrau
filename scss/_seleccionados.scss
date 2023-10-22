@@ -1,0 +1,15 @@
+.seleccionados {
+  font-family: $estiloLetra;
+  text-align: justify;
+  div {
+    .imgNoticias {
+      @include sizes(250px,fit-content);
+      margin: auto;
+    }
+  }
+  .card{
+    .titulo{
+      font-weight: bold;
+    }
+  }
+}

@@ -1,0 +1,101 @@
+// Fondo imágen
+main {
+  .background-image {
+    height: 45vh; /* Fijar la altura de la imagen de fondo al 45% de la altura del viewport */
+    background-image: url("../img/fondo.jpg");
+    background-size: cover; /* Hacer que la imagen de fondo cubra todo el espacio disponible */
+    background-position: center center; /* Centrar la imagen de fondo */
+    @include flex-col-center;
+    animation-duration: 3s;
+    animation-name: fadeIn;
+    .text-box {
+      align-self: center;
+      font-family: $estiloLetra;
+      text-align: center;
+      .h1Index {
+        font-size: 4rem;
+        color: #fff;
+        background-color: $colorBase;
+        opacity: 0.8; /* Establecer la opacidad al 80% (20% de transparencia) */
+        padding: 5px;
+      }
+      h2 {
+        font-size: 2.3rem;
+        background-color: rgb(255, 255, 255);
+        color: $colorBase;
+        padding: 5px;
+      }
+    }
+  }
+  .index {
+    text-align: center;
+    font-family: $estiloLetra;
+    div {
+      .h3Index {
+        font-size: 3rem;
+        color: $colorBase;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+    }
+    div {
+      img {
+        .imgMain {
+          padding: 10px;
+          position: relative;
+        }
+      }
+      .h4Index {
+        font-size: 1.7rem;
+        padding: 5px;
+        justify-content: center;
+        margin: auto;
+        text-align: center;
+        margin-bottom: 2px;
+      }
+      .pMain {
+        text-align: justify;
+        text-justify: inter-word;
+        .Bold{
+          font-weight: bold;
+        }
+        .italic{
+          font-style: italic;
+        }
+      }
+    }
+    div {
+      .textoGris {
+        color: gray;
+        text-align: center;
+        margin: 3px auto 0 auto;
+      }
+      .lineaCeleste {
+        border: 3px solid $colorBase;
+        width: 10%;
+        opacity: 1;
+        margin: 0 auto 15px auto;
+      }
+    }
+    div {
+      div {
+        .botonReserva {
+          padding: 10px;
+          width: fit-content;
+          background-color: $colorBase;
+          .linkReserva {
+            text-decoration: none;
+            color: white;
+            &:hover {
+              color: black;
+              font-size: larger;
+              border: 3px solid $colorBase;
+              padding: 5px;
+              border-radius: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

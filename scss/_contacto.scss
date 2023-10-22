@@ -1,0 +1,76 @@
+.h2Color {
+  font-size: 2.2rem;
+  color: $colorBase;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+/* Estilos mapa Google pagina contacto*/
+.contacto {
+  .mapouter {
+    position: relative;
+    text-align: right;
+    width: 85%;
+    height: 350px;
+    margin: 0 auto;
+    .gmap_canvas {
+      overflow: hidden;
+      background: none;
+      width: 100%;
+      height: 400px;
+      .gmap_iframe {
+        height: 350px;
+      }
+    }
+  }
+}
+
+div {
+  .boxContacto {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h2 {
+      font-size: 2.3rem;
+      background-color: rgb(255, 255, 255);
+      color: $colorBase;
+      padding: 5px;
+    }
+    .italic {
+      font-style: italic;
+    }
+    .pPrecio {
+      color: gray;
+    }
+    .Bold{
+      font-weight: bold;
+    }
+    .botonEnviar {
+      color: white;
+      background-color: $colorBase;
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 5px;
+      &:hover {
+        color: black;
+        font-size: larger;
+        border: 3px solid $colorBase;
+        padding: 5px;
+        border-radius: 5px;
+      }
+    }
+    .pContacto {
+      text-align: center;
+    }
+    .pregFrec {
+      text-align: justify;
+    }
+    h3 {
+      color: $colorBase;
+    }
+    .pregFrec {
+      text-align: justify;
+    }
+  }
+}

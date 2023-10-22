@@ -1,0 +1,583 @@
+@charset "UTF-8";
+/* Resetear estilos predeterminados */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos responsivos para pantallas pequeñas (576px o menos) */
+@media (max-width: 576px) {
+  main .background-image {
+    height: 30vh;
+  }
+  main .background-image .text-box .h1Index {
+    font-size: 1.5rem !important;
+  }
+  main .background-image .text-box h2 {
+    font-size: 1.1rem !important;
+  }
+  main .index div div .imgMain {
+    width: 80%;
+  }
+  main .index div .h2Color {
+    font-size: 1.2rem !important;
+  }
+  main section h3 {
+    font-size: 1.3rem !important;
+  }
+  main div h4 {
+    font-size: 1.1rem !important;
+  }
+  main div p {
+    font-size: 0.9rem !important;
+  }
+  .boxContacto {
+    width: 95%;
+    margin: auto;
+  }
+  .boxContacto h3 {
+    font-size: 1.1rem !important;
+  }
+  .contacto .mapouter {
+    height: 200px;
+    width: 100%;
+  }
+  .contacto .mapouter .gmap_canvas {
+    height: 200px;
+  }
+  .contacto .mapouter .gmap_canvas .gmap_iframe {
+    height: 180px;
+  }
+  .contacto .pContacto {
+    text-align: center;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .tabla h5 {
+    font-size: 1rem !important;
+  }
+  .programas {
+    text-align: center;
+  }
+  .programas h4 {
+    font-size: 1rem !important;
+  }
+  .programas h5 {
+    font-size: 0.9rem !important;
+  }
+  .boxContacto h3 {
+    font-size: 1.3rem !important;
+  }
+  .boxContacto h4 {
+    font-size: 1rem !important;
+  }
+  .seleccionados h4 {
+    font-size: 1rem !important;
+  }
+}
+/* Estilos responsivos para pantallas medianas (entre 577px y 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  main .background-image {
+    height: 40vh;
+  }
+  main .background-image .text-box h1 {
+    font-size: 2.35rem !important;
+  }
+  main .background-image .text-box h2 {
+    font-size: 1.8rem !important;
+  }
+  main .index div h3 {
+    font-size: 1.7rem !important;
+  }
+  main .index div div .imgMain {
+    width: 80%;
+  }
+  main .index div .h2Color {
+    font-size: 1.8rem !important;
+  }
+  main .index div h4 {
+    font-size: 1.4rem !important;
+  }
+  main .index div p {
+    font-size: 1rem !important;
+  }
+  .contacto .mapouter {
+    height: 220px;
+    width: 80%;
+  }
+  .contacto .mapouter .gmap_canvas {
+    height: 220px;
+  }
+  .contacto .mapouter .gmap_canvas .gmap_iframe {
+    height: 200px;
+  }
+  .contacto .pContacto {
+    text-align: center;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .boxContacto h3 {
+    font-size: 1.4rem !important;
+  }
+  .boxContacto h4 {
+    font-size: 1.1rem !important;
+  }
+  .tabla .Programa-1 h5 {
+    font-size: 1rem !important;
+  }
+  .programas {
+    text-align: center;
+  }
+  .programas h4 {
+    font-size: 1.1rem !important;
+  }
+}
+@media (min-width: 769px) and (max-width: 992px) {
+  main .background-image {
+    height: 45vh;
+  }
+  main .background-image .text-box h1 {
+    font-size: 3.2rem !important;
+  }
+  main .background-image .text-box h2 {
+    font-size: 2rem !important;
+  }
+  main .index div h3 {
+    font-size: 2rem !important;
+  }
+  main .index div h4 {
+    font-size: 1.4rem !important;
+  }
+  main .index div p {
+    font-size: 1rem !important;
+  }
+  main .index div .h2Color {
+    font-size: 2rem !important;
+  }
+  .contacto .mapouter {
+    height: 270px;
+    width: 64%;
+  }
+  .contacto .mapouter .gmap_canvas {
+    height: 270px;
+  }
+  .contacto .mapouter .gmap_canvas .gmap_iframe {
+    height: 250px;
+  }
+  .contacto .pContacto {
+    text-align: center;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .boxContacto h3 {
+    font-size: 1.6rem !important;
+  }
+  .boxContacto h4 {
+    font-size: 1.2rem !important;
+  }
+  .tabla .Programa-1 h5 {
+    font-size: 1rem !important;
+  }
+  .programas {
+    text-align: center;
+  }
+  .programas h4 {
+    font-size: 1.3rem !important;
+  }
+}
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-collapse {
+    display: block;
+    flex-basis: content; /* Esto significa que el tamaño base de los elementos se ajustará automáticamente al contenido que contienen. */
+  }
+}
+header .logo {
+  padding: 2px;
+  height: 50px;
+}
+header nav div .navbar-collapse {
+  flex-grow: unset !important; /* Desactivar el crecimiento flexible de la barra de navegación. El!important es una regla de prioridad que indica que esta declaración de estilo debe aplicarse incluso si existen otras reglas que intentan cambiar la propiedad.*/
+}
+header nav div ul li a:hover {
+  text-decoration: underline; /* Subrayar */
+  text-decoration-color: rgb(103, 195, 222); /* Color de la subrayado */
+  text-decoration-thickness: 3px; /* Grosor de la subrayado */
+}
+header nav div ul li a:hover i {
+  color: rgb(103, 195, 222);
+}
+
+main .background-image {
+  height: 45vh; /* Fijar la altura de la imagen de fondo al 45% de la altura del viewport */
+  background-image: url("../img/fondo.jpg");
+  background-size: cover; /* Hacer que la imagen de fondo cubra todo el espacio disponible */
+  background-position: center center; /* Centrar la imagen de fondo */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation-duration: 3s;
+  animation-name: fadeIn;
+}
+main .background-image .text-box {
+  align-self: center;
+  font-family: "Playfair Display";
+  text-align: center;
+}
+main .background-image .text-box .h1Index {
+  font-size: 4rem;
+  color: #fff;
+  background-color: rgb(103, 195, 222);
+  opacity: 0.8; /* Establecer la opacidad al 80% (20% de transparencia) */
+  padding: 5px;
+}
+main .background-image .text-box h2 {
+  font-size: 2.3rem;
+  background-color: rgb(255, 255, 255);
+  color: rgb(103, 195, 222);
+  padding: 5px;
+}
+main .index {
+  text-align: center;
+  font-family: "Playfair Display";
+}
+main .index div .h3Index {
+  font-size: 3rem;
+  color: rgb(103, 195, 222);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+main .index div img .imgMain {
+  padding: 10px;
+  position: relative;
+}
+main .index div .h4Index {
+  font-size: 1.7rem;
+  padding: 5px;
+  justify-content: center;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 2px;
+}
+main .index div .pMain {
+  text-align: justify;
+  text-justify: inter-word;
+}
+main .index div .pMain .Bold {
+  font-weight: bold;
+}
+main .index div .pMain .italic {
+  font-style: italic;
+}
+main .index div .textoGris {
+  color: gray;
+  text-align: center;
+  margin: 3px auto 0 auto;
+}
+main .index div .lineaCeleste {
+  border: 3px solid rgb(103, 195, 222);
+  width: 10%;
+  opacity: 1;
+  margin: 0 auto 15px auto;
+}
+main .index div div .botonReserva {
+  padding: 10px;
+  width: fit-content;
+  background-color: rgb(103, 195, 222);
+}
+main .index div div .botonReserva .linkReserva {
+  text-decoration: none;
+  color: white;
+}
+main .index div div .botonReserva .linkReserva:hover {
+  color: black;
+  font-size: larger;
+  border: 3px solid rgb(103, 195, 222);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.footer {
+  font-size: 1rem;
+  background-color: rgba(7, 7, 7, 0);
+  text-align: center;
+}
+.footer .hr {
+  border: 10px;
+  color: rgba(0, 0, 0, 0);
+  padding: 2px;
+}
+.footer section a i {
+  color: rgb(103, 195, 222);
+}
+
+.seleccionados {
+  font-family: "Playfair Display";
+  text-align: justify;
+}
+.seleccionados div .imgNoticias {
+  height: fit-content;
+  width: 250px;
+  margin: auto;
+}
+.seleccionados .card .titulo {
+  font-weight: bold;
+}
+
+.programas {
+  font-family: "Playfair Display";
+}
+.programas .h3Color {
+  font-size: 2rem;
+  color: rgb(103, 195, 222);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.programas .textoGris {
+  margin: auto;
+  color: gray;
+  padding: 2px;
+}
+.programas .lineaCeleste {
+  border: 3px solid rgb(103, 195, 222);
+  width: 10%;
+  opacity: 1;
+  margin: 0 auto 15px auto;
+}
+.programas h4 {
+  font-weight: bold;
+}
+.programas div div {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.programas div div .boxProgramas1 {
+  align-items: flex-end;
+}
+.programas div div .boxProgramas1 .imgProgramas {
+  width: 100%;
+  padding: 10px;
+  padding-bottom: 10px;
+  align-content: center;
+}
+.programas div div .boxProgramas2 {
+  align-items: flex-start;
+  align-content: center;
+}
+.programas div div h4 {
+  font-size: 1.3rem;
+}
+.programas div div p {
+  text-align: justify;
+}
+
+.precio .h2Color {
+  font-size: 2.2rem;
+  color: rgb(103, 195, 222);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.tabla {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-auto-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  justify-content: stretch;
+  justify-items: stretch;
+  align-items: center;
+  grid-template-areas: "Titulo Titulo" "Programa-1 Precio-1" "Programa-2 Precio-2" "Programa-3 Precio-3" "Titulo-2 Titulo-2" "Programa-4 Precio-4" "Programa-5 Precio-5" "Programa-6 Precio-6" "Titulo-3 Titulo-3" "Programa-7 Precio-7" "Programa-8 Precio-8" "Titulo-4 Titulo-4" "Programa-9 Precio-9" "Programa-10 Precio-10";
+  margin: 0 auto;
+}
+.tabla .Titulo {
+  justify-self: stretch;
+  align-self: center;
+  grid-area: Titulo;
+  border-bottom: 1px solid #ddd; /* Línea gris claro */
+  margin-bottom: 0;
+}
+.tabla .Titulo h4 {
+  color: rgb(103, 195, 222);
+}
+.tabla .Programa-1 {
+  grid-area: Programa-1;
+}
+.tabla .Precio-1 {
+  justify-self: center;
+  grid-area: Precio-1;
+}
+.tabla .Programa-2 {
+  grid-area: Programa-2;
+}
+.tabla .Precio-2 {
+  justify-self: center;
+  grid-area: Precio-2;
+}
+.tabla .Programa-3 {
+  grid-area: Programa-3;
+}
+.tabla .Precio-3 {
+  justify-self: center;
+  grid-area: Precio-3;
+}
+.tabla .Titulo-2 {
+  justify-self: stretch;
+  align-self: center;
+  grid-area: Titulo-2;
+  border-bottom: 1px solid #ddd; /* Línea gris claro */
+  margin-bottom: 0;
+}
+.tabla .Titulo-2 h4 {
+  color: rgb(103, 195, 222);
+}
+.tabla .Programa-4 {
+  grid-area: Programa-4;
+}
+.tabla .Precio-4 {
+  justify-self: center;
+  grid-area: Precio-4;
+}
+.tabla .Programa-5 {
+  grid-area: Programa-5;
+}
+.tabla .Precio-5 {
+  justify-self: center;
+  grid-area: Precio-5;
+}
+.tabla .Programa-6 {
+  grid-area: Programa-6;
+}
+.tabla .Precio-6 {
+  justify-self: center;
+  grid-area: Precio-6;
+}
+.tabla .Titulo-3 {
+  justify-self: stretch;
+  align-self: center;
+  grid-area: Titulo-3;
+  border-bottom: 1px solid #ddd; /* Línea gris claro */
+  margin-bottom: 0;
+}
+.tabla .Titulo-3 h4 {
+  color: rgb(103, 195, 222);
+}
+.tabla .Programa-7 {
+  grid-area: Programa-7;
+}
+.tabla .Precio-7 {
+  justify-self: center;
+  grid-area: Precio-7;
+}
+.tabla .Programa-8 {
+  grid-area: Programa-8;
+}
+.tabla .Precio-8 {
+  justify-self: center;
+  grid-area: Precio-8;
+}
+.tabla .Titulo-4 {
+  justify-self: stretch;
+  align-self: center;
+  grid-area: Titulo-4;
+  border-bottom: 1px solid #ddd; /* Línea gris claro */
+  margin-bottom: 0;
+}
+.tabla .Titulo-4 h4 {
+  color: rgb(103, 195, 222);
+}
+.tabla .Programa-9 {
+  grid-area: Programa-9;
+}
+.tabla .Precio-9 {
+  justify-self: center;
+  grid-area: Precio-9;
+}
+.tabla .Programa-10 {
+  grid-area: Programa-10;
+}
+.tabla .Precio-10 {
+  justify-self: center;
+  grid-area: Precio-10;
+}
+.tabla div .pPrecio {
+  text-align: center;
+  color: gray;
+}
+
+.h2Color {
+  font-size: 2.2rem;
+  color: rgb(103, 195, 222);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+/* Estilos mapa Google pagina contacto*/
+.contacto .mapouter {
+  position: relative;
+  text-align: right;
+  width: 85%;
+  height: 350px;
+  margin: 0 auto;
+}
+.contacto .mapouter .gmap_canvas {
+  overflow: hidden;
+  background: none;
+  width: 100%;
+  height: 400px;
+}
+.contacto .mapouter .gmap_canvas .gmap_iframe {
+  height: 350px;
+}
+
+div .boxContacto {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+div .boxContacto h2 {
+  font-size: 2.3rem;
+  background-color: rgb(255, 255, 255);
+  color: rgb(103, 195, 222);
+  padding: 5px;
+}
+div .boxContacto .italic {
+  font-style: italic;
+}
+div .boxContacto .pPrecio {
+  color: gray;
+}
+div .boxContacto .Bold {
+  font-weight: bold;
+}
+div .boxContacto .botonEnviar {
+  color: white;
+  background-color: rgb(103, 195, 222);
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+div .boxContacto .botonEnviar:hover {
+  color: black;
+  font-size: larger;
+  border: 3px solid rgb(103, 195, 222);
+  padding: 5px;
+  border-radius: 5px;
+}
+div .boxContacto .pContacto {
+  text-align: center;
+}
+div .boxContacto .pregFrec {
+  text-align: justify;
+}
+div .boxContacto h3 {
+  color: rgb(103, 195, 222);
+}
+div .boxContacto .pregFrec {
+  text-align: justify;
+}
+
+/*# sourceMappingURL=style.css.map */

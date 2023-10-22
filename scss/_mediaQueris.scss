@@ -1,0 +1,251 @@
+/* Estilos responsivos para pantallas pequeñas (576px o menos) */
+@media (max-width: 576px) {
+  main {
+    .background-image {
+      height: 30vh;
+      .text-box {
+        .h1Index {
+          font-size: 1.5rem !important;
+        }
+        h2 {
+          font-size: 1.1rem !important;
+        }
+      }
+    }
+    .index{
+      div{
+        div{
+          .imgMain{
+            width: 80%;
+          }
+        }
+        .h2Color{
+          font-size: 1.2rem !important;
+        }
+      }
+    }
+    section {
+      h3 {
+        font-size: 1.3rem !important;
+      }
+    }
+    div {
+      h4 {
+        font-size: 1.1rem !important; 
+      }
+      p {
+        font-size: 0.9rem !important;
+      }
+    }
+  }
+  .boxContacto {
+    width: 95%;
+    margin: auto;
+    h3 {
+      font-size: 1.1rem !important;
+    }
+  }
+  .contacto {
+    .mapouter {
+      height: 200px;
+      width: 100%;
+      .gmap_canvas {
+        height: 200px;
+        .gmap_iframe {
+          height: 180px;
+        }
+      }
+    }
+    .pContacto {
+      text-align: center;
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+  }
+  .tabla {
+    h5 {
+      font-size: 1rem !important;
+    }
+  }
+  .programas {
+    text-align: center;
+    h4 {
+      font-size: 1rem !important;
+    }
+    h5 {
+      font-size: 0.9rem !important;
+    }
+  }
+  .boxContacto {
+    h3 {
+      font-size: 1.3rem !important;
+    }
+    h4 {
+      font-size: 1rem !important;
+    }
+  }
+  .seleccionados {
+    h4 {
+      font-size: 1rem !important;
+    }
+  }
+}
+
+/* Estilos responsivos para pantallas medianas (entre 577px y 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  main {
+    .background-image {
+      height: 40vh;
+      .text-box {
+        h1 {
+          font-size: 2.35rem !important;
+        }
+        h2 {
+          font-size: 1.8rem !important;
+        }
+      }
+    }
+    .index {
+      div {
+        h3 {
+          font-size: 1.7rem !important;
+        }
+        div{
+          .imgMain{
+            width: 80%;
+          }
+        }
+        .h2Color{
+          font-size: 1.8rem !important;
+        }
+      }
+      div {
+        h4 {
+          font-size: 1.4rem !important;
+        }
+        p {
+          font-size: 1rem !important;
+        }
+      }
+    }
+  }
+  .contacto {
+    .mapouter {
+      height: 220px;
+      width: 80%;
+      .gmap_canvas {
+        height: 220px;
+        .gmap_iframe {
+          height: 200px;
+        }
+      }
+    }
+    .pContacto {
+      text-align: center;
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+  }
+  .boxContacto {
+    h3 {
+      font-size: 1.4rem !important;
+    }
+    h4 {
+      font-size: 1.1rem !important;
+    }
+  }
+  .tabla {
+    .Programa-1 {
+      h5 {
+        font-size: 1rem !important;
+      }
+    }
+  }
+  .programas {
+    text-align: center;
+    h4 {
+      font-size: 1.1rem !important;
+    }
+  }
+}
+
+// /* Estilos responsivos para pantallas grandes (entre 769px y 992px) */
+@media (min-width: 769px) and (max-width: 992px) {
+  main {
+    .background-image {
+      height: 45vh;
+      .text-box {
+        h1 {
+          font-size: 3.2rem !important;
+        }
+        h2 {
+          font-size: 2rem !important;
+        }
+      }
+    }
+    .index {
+      div {
+        h3 {
+          font-size: 2rem !important;
+        }
+      }
+      div {
+        h4 {
+          font-size: 1.4rem !important;
+        }
+        p {
+          font-size: 1rem !important;
+        }
+        .h2Color{
+          font-size: 2rem !important;
+        }
+      }
+    }
+  }
+  .contacto {
+    .mapouter {
+      height: 270px;
+      width: 64%;
+      .gmap_canvas {
+        height: 270px;
+        .gmap_iframe {
+          height: 250px;
+        }
+      }
+    }
+    .pContacto {
+      text-align: center;
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+  }
+  .boxContacto {
+    h3{
+      font-size: 1.6rem !important;
+    }
+    h4 {
+      font-size: 1.2rem !important;
+    }
+  }
+  .tabla {
+    .Programa-1 {
+      h5 {
+        font-size: 1rem !important;
+      }
+    }
+  }
+  .programas {
+    text-align: center;
+    h4 {
+      font-size: 1.3rem !important;
+    }
+  }
+}
+
+// /* Estilos responsivos para pantallas mayores a 992px */
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-collapse {
+    display: block;
+    flex-basis: content; /* Esto significa que el tamaño base de los elementos se ajustará automáticamente al contenido que contienen. */
+  }
+}

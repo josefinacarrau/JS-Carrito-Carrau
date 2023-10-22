@@ -1,0 +1,50 @@
+.programas {
+  font-family: $estiloLetra;
+  .h3Color{
+    font-size: 2rem;
+    color: $colorBase;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .textoGris {
+    margin: auto;
+    color: gray;
+    padding: 2px;
+  }
+  .lineaCeleste {
+    border: 3px solid $colorBase;
+    width: 10%;
+    opacity: 1;
+    margin: 0 auto 15px auto;
+  }
+  h4{
+    font-weight: bold;
+  }
+  div {
+    div {
+      padding-top: 10px;
+ @include flex-col-center;
+      .boxProgramas1 {
+        align-items: flex-end;
+        .imgProgramas {
+          width: 100%;
+          padding: 10px;
+          padding-bottom: 10px;
+          align-content: center;
+        }
+      }
+    }
+    div {
+      .boxProgramas2 {
+        align-items: flex-start;
+        align-content: center;
+      }
+      h4 {
+        font-size: 1.3rem;
+      }
+      p {
+        text-align: justify;
+      }
+    }
+  }
+}
