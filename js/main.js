@@ -2,41 +2,35 @@
 // Inicializar el total en 0
 let total = 0;
 
-// Función para agregar productos al carrito
-function agregarProducto() {
-  let producto = prompt("Ingresa el servicio: 1) Ninos  2) Adultos  3) ESC");
-  if ((producto = 1)) {
-    let servicioNinos = prompt(
-      "Ingresa el programa: 1) Guardería 2) Escuela 3) Cadetes 4) BACK"
-    );
-    if ((servicioNinos = 1)) {
-      let guardería = prompt(
-        "El costo de guardería es de $1.500 UYU/hr. Ingrese la cantidad de horas que quiera abonar:"
-      );
-      console.log("El total a pagar es:" + 1500 * guardería);
-    }
-  } else if ((producto = 2)) {
-    let servicioAdultos = prompt(
-      "Ingresa el programa: 1) Básico 2) Avanzado 3) Entrenamiento 4) BACK"
-    );
-  } else if ((producto = 3)) {
-    return producto;
+function agregarAlCarrito() {
+  let producto = prompt("Ingrese el nombre del producto:");
+  let precio = prompt("Ingrese el precio del producto:");
+  if (!isNaN(precio) && precio > 0) { //Se fija si el precio corresponde a un numero mayor a 0. !isNan mira si lo escrito es un numero y devuelve true/false.
+    total += precio;
+    console.log(producto + " ha sido agregado al carrito.");
   } else {
-    prompt("Ingrese un número válido");
+    console.log("Ingrese un precio válido para agrgar el producto.");
   }
 }
-34;
 
-agregarProducto();
+function mostrarCarrito() {
+  console.log("Total a pagar: $" + total);
+}
 
-//   if (!isNaN(precio)) { //Devuelve true si es un número válido y false si no lo es
-//     total += precio;
-//     console.log(`Añadiste "${producto}" al carrito por $${precio}`);
-//     console.log(`Total en el carrito: $${total}`);
-//   } else {
-//     console.log("Precio no válido. El producto no se agregó al carrito.");
-//   }
-// }
+function comprar() {
+  while (true) {
+    let opcion = prompt("¿Desea agregar un producto al carrito? (S/N)");
+    if (opcion.toUpperCase() === "S") {
+      agregarAlCarrito();
+    } else if (opcion.toUpperCase() === "N") {
+      mostrarCarrito();
+      break;
+    } else {
+      console.log("Por favor, ingrese una opción válida: 'S' o 'N'.");
+    }
+  }
+}
 
-// // Llamar a la función para agregar productos al cargar la página
-// agregarProducto();
+comprar();
+
+
