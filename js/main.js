@@ -5,7 +5,12 @@ let total = 0;
 function agregarAlCarrito() {
   let producto = prompt("Ingrese el nombre del producto:");
   let precio = prompt("Ingrese el precio del producto:");
-  if (!isNaN(precio) && precio > 0) { //Se fija si el precio corresponde a un numero mayor a 0. !isNan mira si lo escrito es un numero y devuelve true/false.
+
+  // Convertir el precio a un número usando parseFloat
+  precio = parseFloat(precio);
+
+  if (!isNaN(precio) && precio > 0) {
+    //Se fija si el precio corresponde a un numero mayor a 0. !isNan mira si lo escrito es un numero y devuelve true/false.
     total += precio;
     console.log(producto + " ha sido agregado al carrito.");
   } else {
@@ -32,5 +37,3 @@ function comprar() {
 }
 
 comprar();
-
-
