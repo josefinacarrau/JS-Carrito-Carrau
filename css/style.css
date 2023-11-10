@@ -74,6 +74,9 @@
   .seleccionados h4 {
     font-size: 1rem !important;
   }
+  .box .accordion-header .h3Carrito {
+    font-size: 1.3rem !important;
+  }
 }
 /* Estilos responsivos para pantallas medianas (entre 577px y 768px) */
 @media (min-width: 577px) and (max-width: 768px) {
@@ -131,6 +134,9 @@
   .programas h4 {
     font-size: 1.1rem !important;
   }
+  .box .accordion-header .h3Carrito {
+    font-size: 1.5rem !important;
+  }
 }
 @media (min-width: 769px) and (max-width: 992px) {
   main .background-image {
@@ -183,6 +189,9 @@
   }
   .programas h4 {
     font-size: 1.3rem !important;
+  }
+  .box .accordion-header .h3Carrito {
+    font-size: 1.7rem !important;
   }
 }
 @media (min-width: 992px) {
@@ -578,6 +587,38 @@ div .boxContacto h3 {
 }
 div .boxContacto .pregFrec {
   text-align: justify;
+}
+
+.box {
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+  max-width: 300px;
+  border-radius: 5px;
+  flex: 1; /* Hace que las cajas ocupen el mismo ancho y se coloquen en fila */
+  font-family: "Playfair Display";
+}
+.box .accordion-header .h3Carrito {
+  font-size: 2rem;
+}
+.box .botonReserva {
+  padding: 5px;
+  width: fit-content;
+  background-color: rgb(103, 195, 222);
+  margin-left: 15px;
+}
+.box .colorBlanco {
+  text-decoration: none;
+  color: white;
+}
+.box .colorBlanco:hover {
+  color: black;
+  font-size: larger;
+  border: 3px solid rgb(103, 195, 222);
+  padding: 5px;
+  border-radius: 5px;
 }
 
 /*# sourceMappingURL=style.css.map */
