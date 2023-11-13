@@ -35,11 +35,14 @@ console.log("Productos disponibles:");
 
 function mostrarProductos() {
   productos.forEach((producto, index) => {
-    console.log(`${index + 1}. ${producto.nombre}`);
+    //Recorre cada producto del array productos
+    console.log(`${index + 1}. ${producto.nombre}`); //Imprime cada producto con su indice - ${} se usa para concatenar en las mismas comillas entradas de js.
     producto.subProductos.forEach((subProducto, subIndex) => {
+      //Recorre cada sub-producto
       console.log(
+        //Imprime cada sub-producto con su correspondiente información
         `   ${index + 1}.${subIndex + 1} ${subProducto.nombre} - Precio: ${
-          subProducto.porHora ? "$ por hora" : `$${subProducto.precio}`
+          subProducto.porHora ? "$ por hora" : `$${subProducto.precio}` // If `porHora` is true, it displays "$ por hora"; otherwise, it displays the fixed price prefixed with "$".
         }`
       );
     });
@@ -70,13 +73,14 @@ function main() {
     const opcion = prompt(
       "Elija un producto por su número (0 para finalizar):"
     );
-    const [numeroOpcion, subNumeroOpcion] = opcion.split(".").map(Number);
+    const [numeroOpcion, subNumeroOpcion] = opcion.split(".").map(Number); //opcion.split("."): This part of the code splits the input string at the period (.) character. ["1", "2"]
+    //.map(Number): This part of the code applies the Number function to each element of the array. This is used to convert the string elements into numbers. After this step, the array becomes [1, 2]
 
     if (
       numeroOpcion >= 1 &&
       numeroOpcion <= productos.length &&
       subNumeroOpcion >= 1 &&
-      subNumeroOpcion <= productos[numeroOpcion - 1].subProductos.length
+      subNumeroOpcion <= productos[numeroOpcion - 1].subProductos.length //Since arrays in JavaScript are zero-indexed, subtracting 1 from the user input aligns it with the correct index in the array.
     ) {
       const productoElegido =
         productos[numeroOpcion - 1].subProductos[subNumeroOpcion - 1];
