@@ -84,7 +84,19 @@ function main() {
     ) {
       const productoElegido =
         productos[numeroOpcion - 1].subProductos[subNumeroOpcion - 1];
-      carrito.push(productoElegido);
+
+      if (productoElegido.porHora) {
+        const horasContratadas = prompt(
+          `Ingrese la cantidad de horas para ${productoElegido.nombre}:`
+        );
+        carrito.push({
+          ...productoElegido,
+          horasContratadas: parseFloat(horasContratadas),
+        });
+      } else {
+        carrito.push(productoElegido);
+      }
+
       console.log(`${productoElegido.nombre} ha sido añadido al carrito.`);
     } else if (numeroOpcion === 0) {
       seguirComprando = false;
@@ -96,15 +108,10 @@ function main() {
   console.log("Carrito de compras:");
   carrito.forEach((item, index) => {
     if (item.porHora) {
-      const horasContratadas = prompt(
-        `Ingrese la cantidad de horas para ${item.nombre}:`
-      );
       console.log(
-        `${index + 1}. ${item.nombre} - Precio: $${
-          item.precio
-        }/hora - Horas: ${horasContratadas} - Total: $${
-          item.precio * parseFloat(horasContratadas)
-        }`
+        `${index + 1}. ${item.nombre} - Precio: $${item.precio}/hora - Horas: ${
+          item.horasContratadas
+        } - Total: $${item.precio * item.horasContratadas}`
       );
     } else {
       console.log(`${index + 1}. ${item.nombre} - Precio: $${item.precio}`);
