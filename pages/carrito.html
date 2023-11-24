@@ -57,6 +57,10 @@
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/carrito.css" />
 
+    <!-- Script de JS -->
+    <!--     <script src="../js/entrega3.js"></script> -->
+    <script src="../js/prueba.js" defer></script>
+
     <title>Cimarronas Masterclass - Carrito</title>
   </head>
   <body>
@@ -150,7 +154,7 @@
           <hr class="lineaCeleste" />
         </div>
 
-        <div class="container">
+        <!--         <div class="container" id="productos">
           <div class="box">
             <img
               src="../img/Nin;asHockey.jpg"
@@ -341,12 +345,38 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div class="row precio">
           <h2 class="h2Color">ARTÍCULOS DE VENTA</h2>
           <hr class="lineaCeleste" />
         </div>
+
+        <div class="row container-fluid d-flex justify-content">
+          <div class="col-xl-3 col-md-3 col-sm-6">
+            <div class="cardProductos">
+              <img
+                src="../img/GuanteNegro.jpg"
+                alt="Guantes"
+                class="card-img-top imgProducto"
+              />
+              <div class="cardBody">
+                <h3 class="h3Carrito">Guantes</h3>
+                <div class="contenedorColores">
+                  <div class="colorBox aqua"></div>
+                  <div class="colorBox fuchsia"></div>
+                  <div class="colorBox black"></div>
+                </div>
+                <p class="price">$850</p>
+                <button class="btn botonCarrito colorBlanco">
+                  Agregar al carrito
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 
         <div class="container">
           <div class="row">
             <div class="col-lg-2 col-md-3 col-sm-4 col-6">
@@ -455,6 +485,18 @@
             </div>
           </div>
         </div>
+        <div class="row precio">
+          <h2 class="h2Color">TU CARRITO</h2>
+          <hr class="lineaCeleste" />
+        </div> -->
+
+        <div id="carrito">
+          <h2>Carrito</h2>
+          <ul id="lista-carrito">
+            <!-- Aquí se mostrarán los productos agregados al carrito -->
+          </ul>
+          <p id="total">Total: $0</p>
+        </div>
       </section>
     </main>
 
@@ -495,9 +537,6 @@
       </section>
       <!-- Section: Social -->
     </footer>
-
-    <!-- Script de JS -->
-    <script src="../js/entrega2.js"></script>
 
     <!-- Script bootrstrap -->
     <script

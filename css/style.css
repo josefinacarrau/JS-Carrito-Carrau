@@ -589,36 +589,63 @@ div .boxContacto .pregFrec {
   text-align: justify;
 }
 
-.box {
-  background-color: #ffffff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  margin: 20px;
-  padding: 20px;
-  text-align: center;
-  max-width: 300px;
+.cardProductos {
+  border: white solid 3px;
   border-radius: 5px;
-  flex: 1; /* Hace que las cajas ocupen el mismo ancho y se coloquen en fila */
-  font-family: "Playfair Display";
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.5s ease;
+  margin: 10px;
+  width: 100%;
+  position: relative;
 }
-.box .accordion-header .h3Carrito {
-  font-size: 2rem;
+.cardProductos .imgProducto {
+  height: 150px;
+  width: auto;
 }
-.box .botonReserva {
-  padding: 5px;
+.cardProductos .cardBody .h3Carrito {
+  font-size: 1.4rem;
+}
+.cardProductos .cardBody .contenedorColores {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+.cardProductos .cardBody .contenedorColores .colorBox {
+  border: 3px solid black;
+  margin: 0 5px;
+  height: 20px;
+  width: 20px;
+}
+.cardProductos .cardBody .contenedorColores .aqua {
+  background-color: aqua;
+}
+.cardProductos .cardBody .contenedorColores .fuchsia {
+  background-color: fuchsia;
+}
+.cardProductos .cardBody .contenedorColores .black {
+  background-color: black;
+}
+.cardProductos .cardBody .price {
+  margin-top: 0.5rem;
+}
+.cardProductos .cardBody .botonCarrito {
+  padding: 3px;
   width: fit-content;
   background-color: rgb(103, 195, 222);
-  margin-left: 15px;
+  text-transform: uppercase;
+  width: 100%;
 }
-.box .colorBlanco {
+.cardProductos .cardBody .botonCarrito .colorBlanco {
   text-decoration: none;
   color: white;
 }
-.box .colorBlanco:hover {
+.cardProductos .cardBody .botonCarrito .colorBlanco:hover {
   color: black;
-  font-size: larger;
-  border: 3px solid rgb(103, 195, 222);
-  padding: 5px;
-  border-radius: 5px;
+  border: 2px solid rgb(103, 195, 222);
+  padding: 1px;
+  border-radius: 2px;
 }
 
 /*# sourceMappingURL=style.css.map */
