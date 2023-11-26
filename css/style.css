@@ -212,8 +212,26 @@ header nav div ul li a:hover {
   text-decoration-color: rgb(103, 195, 222); /* Color de la subrayado */
   text-decoration-thickness: 3px; /* Grosor de la subrayado */
 }
-header nav div ul li a:hover i {
+header nav div ul li .submenu {
+  position: relative;
+}
+header nav div ul li .submenu i {
   color: rgb(103, 195, 222);
+  cursor: pointer;
+}
+header nav div ul li .submenu #carrito {
+  display: none;
+}
+header nav div ul li .submenu:hover {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 1;
+  background-color: white;
+  padding: 20px;
+  min-height: 400px;
+  min-width: 300px;
 }
 
 main .background-image {
@@ -613,7 +631,8 @@ div .boxContacto .pregFrec {
   width: 100%;
 }
 .cardProductos .cardBody .contenedorColores .colorBox {
-  border: 3px solid black;
+  border: 2px solid black;
+  border-radius: 10px;
   margin: 0 5px;
   height: 20px;
   width: 20px;
@@ -626,6 +645,18 @@ div .boxContacto .pregFrec {
 }
 .cardProductos .cardBody .contenedorColores .black {
   background-color: black;
+}
+.cardProductos .cardBody .contenedorColores .verde {
+  background-color: green;
+}
+.cardProductos .cardBody .contenedorColores .rojo {
+  background-color: red;
+}
+.cardProductos .cardBody .contenedorColores .amarillo {
+  background-color: yellow;
+}
+.cardProductos .cardBody .contenedorColores .blanca {
+  background-color: white;
 }
 .cardProductos .cardBody .price {
   margin-top: 0.5rem;

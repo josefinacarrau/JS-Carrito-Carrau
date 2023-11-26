@@ -21,7 +21,8 @@
       align-items: center;
       width: 100%;
       .colorBox {
-        border: 3px solid black;
+        border: 2px solid black;
+        border-radius: 10px;
         margin: 0 5px;
         height: 20px;
         width: 20px;
@@ -34,6 +35,18 @@
       }
       .black {
         background-color: black;
+      }
+      .verde {
+        background-color: green;
+      }
+      .rojo {
+        background-color: red;
+      }
+      .amarillo {
+        background-color: yellow;
+      }
+      .blanca {
+        background-color: white;
       }
     }
     .price {
