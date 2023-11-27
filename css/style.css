@@ -5,6 +5,14 @@
   padding: 0;
 }
 
+/* Estilos generales */
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 /* Estilos responsivos para pantallas pequeñas (576px o menos) */
 @media (max-width: 576px) {
   main .background-image {
@@ -613,19 +621,21 @@ div .boxContacto .pregFrec {
   margin: 10px;
   text-align: center;
   border-radius: 5px;
-  flex: 1; /* Hace que las cajas ocupen el mismo ancho y se coloquen en fila */
+  flex: 1 !important; /* Hace que las cajas ocupen el mismo ancho y se coloquen en fila */
   font-family: "Playfair Display";
 }
 .box .imgCarrito {
-  height: 300px;
-  width: auto;
+  height: auto;
+  max-width: 100%;
+  display: block; /* Elimina el espacio extra debajo de la imagen */
+  margin: auto; /* Centra la imagen dentro de su contenedor */
 }
 .box .accordion-button {
   width: auto;
   display: inline;
 }
 .box .accordion-body {
-  display: inline-block;
+  display: inline;
 }
 .box .accordion-body .pCarrito {
   margin-bottom: 0.5rem;
@@ -703,6 +713,32 @@ div .boxContacto .pregFrec {
   border: 2px solid rgb(103, 195, 222);
   padding: 1px;
   border-radius: 2px;
+}
+
+/* Media queries para ajustar el diseño según el tamaño de la pantalla */
+@media (min-width: 576px) {
+  /* Pequeñas (sm) */
+  .box {
+    flex: 0 0 50%; /* 2 cajas por línea */
+  }
+}
+@media (min-width: 768px) {
+  /* Medianas (md) */
+  .box {
+    flex: 0 0 50%; /* 2 cajas por línea */
+  }
+}
+@media (min-width: 992px) {
+  /* Grandes (lg) */
+  .box {
+    flex: 0 0 33.333%; /* 3 cajas por línea */
+  }
+}
+@media (min-width: 1200px) {
+  /* Extra grandes (xl) */
+  .box {
+    flex: 0 0 33.333%; /* 3 cajas por línea */
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
