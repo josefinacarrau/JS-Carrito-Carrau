@@ -30,13 +30,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
 
     <!-- Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -143,9 +136,9 @@
                     id="iconCarrito"
                     style="color: rgb(103, 195, 222)"
                   ></i>
-                  <div id="carrito">
+                  <div id="carrito" class=".open">
                     <!--completar el dibujo del carrito -->
-                    <table id="lista-carrito" class="u-full-width">
+                    <table id="listaCarrito" class="u-full-width">
                       <thead>
                         <tr>
                           <th>Imagen</th>
@@ -157,8 +150,11 @@
                       </thead>
                       <tbody></tbody>
                     </table>
-                    <a href="#" id="vaciar-carrito" class="boton u-full-width"
+                    <a href="#" id="vaciarCarrito" class="boton u-full-width"
                       >Vaciar Carrito</a
+                    >
+                    <a href="#" id="modificarCarrito" class="boton u-full-width"
+                      >Modificar Carrito</a
                     >
                   </div>
                 </div>
@@ -185,7 +181,7 @@
           <hr class="lineaCeleste" />
         </div>
 
-        <div class="row">
+        <div class="row" id="listaProgramas">
           <div class="box">
             <img
               src="../img/Nin;asHockey.jpg"
@@ -220,24 +216,44 @@
                   <div
                     class="accordion-body justify-content-between text-center"
                   >
-                    <p class="pCarrito">
+                  <div class="parent2">
+                    <div class="div1"><p>1.1</p> </div>
+                    <div class="div2"><p>Guardería</p> </div>
+                    <div class="div3"><p>1.500 UYU/hr</p> </div>
+                    <div class="div4"><button class="btn btnCarrito">
+                      <i class="fas fa-shopping-cart fa-xs" data-id="7"></i>
+                    </button></div>
+                    <div class="div5"><p>1.2 </p></div>
+                    <div class="div6"><p>Escuela de ninos/as</p> </div>
+                    <div class="div7"><p>22.000 UYU/per</p> </div>
+                    <div class="div8"><button class="btn btnCarrito">
+                      <i class="fas fa-shopping-cart fa-xs" data-id="7"></i>
+                    </button> </div>
+                    <div class="div9"><p>1.3</p> </div>
+                    <div class="div10"><p>Cadetes</p> </div>
+                    <div class="div11"><p>19.500 UYU/per</p> </div>
+                    <div class="div12"><button class="btn btnCarrito">
+                      <i class="fas fa-shopping-cart fa-xs" data-id="7"></i>
+                    </button> </div>
+                    </div>
+                    <!-- <p class="pCarrito">
                       1.1 Guardería de hockey: 1.500 UYU/hr
                       <button class="btn btnCarrito">
-                        <i class="fas fa-shopping-cart fa-xs"></i>
+                        <i class="fas fa-shopping-cart fa-xs" data-id="1"></i>
                       </button>
                     </p>
                     <p class="pCarrito">
                       1.2 Escuela: 22.000 UYU/per
                       <button class="btn btnCarrito">
-                        <i class="fas fa-shopping-cart fa-xs"></i>
+                        <i class="fas fa-shopping-cart fa-xs" data-id="2"></i>
                       </button>
                     </p>
                     <p class="pCarrito">
                       1.3 Cadetes: 19.500 UYU/per
                       <button class="btn btnCarrito">
-                        <i class="fas fa-shopping-cart fa-xs"></i>
+                        <i class="fas fa-shopping-cart fa-xs" data-id="3"></i>
                       </button>
-                    </p>
+                    </p> -->
                   </div>
                 </div>
               </div>
@@ -277,24 +293,45 @@
                   <div
                     class="accordion-body justify-content-between text-center"
                   >
-                    <p class="pCarrito">
+                  <div class="parent2">
+                    <div class="div1"><p>2.1</p> </div>
+                    <div class="div2"><p>Basico</p> </div>
+                    <div class="div3"><p>18.500 UYU/per</p> </div>
+                    <div class="div4"><button class="btn btnCarrito">
+                      <i class="fas fa-shopping-cart fa-xs" data-id="7"></i>
+                    </button></div>
+                    <div class="div5"><p>2.2 </p></div>
+                    <div class="div6"><p>Clases Avanzadas</p> </div>
+                    <div class="div7"><p>2.500 UYU/per</p> </div>
+                    <div class="div8"><button class="btn btnCarrito">
+                      <i class="fas fa-shopping-cart fa-xs" data-id="7"></i>
+                    </button> </div>
+                    <div class="div9"><p>2.3</p> </div>
+                    <div class="div10"> <p>Programa de entrenamiento</p></div>
+                    <div class="div11"><p>20.000 UYU/per</p> </div>
+                    <div class="div12"><button class="btn btnCarrito">
+                      <i class="fas fa-shopping-cart fa-xs" data-id="7"></i>
+                    </button> </div>
+                    </div>
+
+                    <!-- <p class="pCarrito">
                       2.1 Básico: 18.500 UYU/hr
                       <button class="btn btnCarrito">
-                        <i class="fas fa-shopping-cart fa-xs"></i>
+                        <i class="fas fa-shopping-cart fa-xs" data-id="4"></i>
                       </button>
                     </p>
                     <p class="pCarrito">
                       2.2 Avanzadas: 2.500 UYU/hr
                       <button class="btn btnCarrito">
-                        <i class="fas fa-shopping-cart fa-xs"></i>
+                        <i class="fas fa-shopping-cart fa-xs" data-id="5"></i>
                       </button>
                     </p>
                     <p class="pCarrito">
                       2.3 Entrenamiento: 20.000 UYU/per
                       <button class="btn btnCarrito">
-                        <i class="fas fa-shopping-cart fa-xs"></i>
+                        <i class="fas fa-shopping-cart fa-xs" data-id="6"></i>
                       </button>
-                    </p>
+                    </p> -->
                   </div>
                 </div>
               </div>
@@ -334,18 +371,38 @@
                   <div
                     class="accordion-body justify-content-between text-center"
                   >
-                    <p class="pCarrito">
+                    <div class="parent">
+                      <div class="div1"><p>3.1</p></div>
+                      <div class="div2"><p>Básico:</p></div>
+                      <div class="div3"> 
+                        <p> 20.500 UYU/per</p>
+                      </div>
+                      <div class="div4">
+                        <button class="btn btnCarrito">
+                          <i class="fas fa-shopping-cart fa-xs" data-id="7"></i>
+                        </button>
+                      </div>
+                      <div class="div5"><p>3.2</p></div>
+                      <div class="div6"><p>Avanzado:</p></div>
+                      <div class="div7"><p>2.500 UYU/hr</p></div>
+                      <div class="div8"> <button class="btn btnCarrito">
+                        <i class="fas fa-shopping-cart fa-xs" data-id="7"></i>
+                      </button></div>
+                    </div>
+                  </div>
+                    <!--                    <p class="pCarrito">
                       3.1 Básico: 20.500 UYU/per
                       <button class="btn btnCarrito">
-                        <i class="fas fa-shopping-cart fa-xs"></i>
+                        <i class="fas fa-shopping-cart fa-xs" data-id="7"></i>
                       </button>
                     </p>
-                    <p class="pCarrito">
-                      3.2 Avanzado: 2.500 UYU/hr
+                    <p class="pCarrito">3.2 Avanzado:</p>
+                    <p class="precio">
+                      2.500 UYU/hr
                       <button class="btn btnCarrito">
-                        <i class="fas fa-shopping-cart fa-xs"></i>
+                        <i class="fas fa-shopping-cart fa-xs" data-id="8"></i>
                       </button>
-                    </p>
+                    </p> -->
                   </div>
                 </div>
               </div>
@@ -383,18 +440,39 @@
                   data-bs-parent="#accordionFlushExample"
                 >
                   <div class="accordion-body">
-                    <p class="pCarrito">
+                    <div class="parent">
+                      <div class="div1"><p>4.1</p></div>
+                      <div class="div2"><p>Grupal:</p></div>
+                      <div class="div3"> 
+                        <p> 17.500 UYU/per</p>
+                      </div>
+                      <div class="div4">
+                        <button class="btn btnCarrito">
+                          <i class="fas fa-shopping-cart fa-xs" data-id="7"></i>
+                        </button>
+                      </div>
+                      <div class="div5"><p>4.2</p></div>
+                      <div class="div6"><p>Individual:</p></div>
+                      <div class="div7"><p>20.759 UYU/per</p></div>
+                      <div class="div8"> <button class="btn btnCarrito">
+                        <i class="fas fa-shopping-cart fa-xs" data-id="7"></i>
+                      </button></div>
+                    </div>
+
+                    <!-- <p class="pCarrito nombre">
                       4.1 Grupal: 17.500 UYU/per
                       <button class="btn btnCarrito">
-                        <i class="fas fa-shopping-cart fa-xs"></i>
+                        <i class="fas fa-shopping-cart fa-xs" data-id="9"></i>
                       </button>
+                      <br />
                     </p>
-                    <p class="pCarrito">
-                      4.2 Individual: 20.750 UYU/per
+                    <p class="pCarrito">4.2 Individual:</p>
+                    <p class="precio">
+                      20.750 UYU/per
                       <button class="btn btnCarrito">
-                        <i class="fas fa-shopping-cart fa-xs"></i>
+                        <i class="fas fa-shopping-cart fa-xs" data-id="10"></i>
                       </button>
-                    </p>
+                    </p> -->
                   </div>
                 </div>
               </div>
@@ -407,7 +485,10 @@
           <hr class="lineaCeleste" />
         </div>
 
-        <div class="row container-fluid d-flex justify-content" id="accesorios">
+        <div
+          class="row container-fluid d-flex justify-content"
+          id="listaAccesorios"
+        >
           <div class="col-xl-3 col-md-3 col-sm-6">
             <div class="cardProductos">
               <img
@@ -437,7 +518,7 @@
                   ></div>
                 </div>
                 <p class="price">$650</p>
-                <button class="btn botonCarrito colorBlanco">
+                <button class="btn btnCarrito colorBlanco">
                   Agregar al carrito
                 </button>
               </div>
@@ -453,7 +534,7 @@
               <div class="cardBody">
                 <h3 class="h3Carrito">Bocha</h3>
                 <p class="price">$190</p>
-                <button class="btn botonCarrito colorBlanco">
+                <button class="btn btnCarrito colorBlanco">
                   Agregar al carrito
                 </button>
               </div>
@@ -484,7 +565,7 @@
                   ></div>
                 </div>
                 <p class="price">$850</p>
-                <button class="btn botonCarrito colorBlanco">
+                <button class="btn btnCarrito colorBlanco">
                   Agregar al carrito
                 </button>
               </div>
@@ -501,7 +582,7 @@
                 <h3 class="h3Carrito">Tarjetas de árbitro</h3>
 
                 <p class="price">$300</p>
-                <button class="btn botonCarrito colorBlanco">
+                <button class="btn btnCarrito colorBlanco">
                   Agregar al carrito
                 </button>
               </div>
@@ -532,7 +613,7 @@
                   ></div>
                 </div>
                 <p class="price">$690</p>
-                <button class="btn botonCarrito colorBlanco">
+                <button class="btn btnCarrito colorBlanco">
                   Agregar al carrito
                 </button>
               </div>
@@ -548,7 +629,7 @@
               <div class="cardBody">
                 <h3 class="h3Carrito">Llaveros</h3>
                 <p class="price">$250</p>
-                <button class="btn botonCarrito colorBlanco">
+                <button class="btn btnCarrito colorBlanco">
                   Agregar al carrito
                 </button>
               </div>
@@ -564,7 +645,7 @@
               <div class="cardBody">
                 <h3 class="h3Carrito">Silbato</h3>
                 <p class="price">$200</p>
-                <button class="btn botonCarrito colorBlanco">
+                <button class="btn btnCarrito colorBlanco">
                   Agregar al carrito
                 </button>
               </div>
@@ -580,7 +661,7 @@
               <div class="cardBody">
                 <h3 class="h3Carrito">Mascara</h3>
                 <p class="price">$1650</p>
-                <button class="btn botonCarrito colorBlanco">
+                <button class="btn btnCarrito colorBlanco">
                   Agregar al carrito
                 </button>
               </div>

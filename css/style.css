@@ -635,16 +635,138 @@ div .boxContacto .pregFrec {
   display: inline;
 }
 .box .accordion-body {
-  display: inline;
+  width: 100%;
+  padding: 5px !important;
 }
-.box .accordion-body .pCarrito {
-  margin-bottom: 0.5rem;
+.box .accordion-body .parent {
+  display: grid;
+  grid-template-columns: 0.3333fr 2fr 1.3333fr 0.333fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
 }
-.box .accordion-body .btnCarrito {
-  margin-left: 25px;
+.box .accordion-body .parent p {
+  white-space: nowrap;
+  margin: 0;
+}
+.box .accordion-body .parent .div1 {
+  grid-area: 1/1/2/2;
+}
+.box .accordion-body .parent .div2 {
+  grid-area: 1/2/2/3;
+  text-align: left;
+  margin-left: 10px;
+}
+.box .accordion-body .parent .div3 {
+  grid-area: 1/3/2/4;
+}
+.box .accordion-body .parent .div4 {
+  grid-area: 1/4/2/5;
+}
+.box .accordion-body .parent .div4 .btnCarrito {
   padding: 1px 7px 2px 6px;
   background-color: rgb(103, 195, 222);
   border-radius: 6px;
+  margin-left: 10px;
+}
+.box .accordion-body .parent .div5 {
+  grid-area: 2/1/3/2;
+}
+.box .accordion-body .parent .div6 {
+  grid-area: 2/2/3/3;
+  text-align: left;
+  margin-left: 10px;
+}
+.box .accordion-body .parent .div7 {
+  grid-area: 2/3/3/4;
+}
+.box .accordion-body .parent .div8 {
+  grid-area: 2/4/3/5;
+}
+.box .accordion-body .parent .div8 .btnCarrito {
+  padding: 1px 7px 2px 6px;
+  background-color: rgb(103, 195, 222);
+  border-radius: 6px;
+  margin-left: 10px;
+}
+.box .accordion-body .parent2 {
+  display: grid;
+  grid-template-columns: 0.3333fr 2fr 1.3333fr 0.333fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+}
+.box .accordion-body .parent2 p {
+  white-space: nowrap;
+  margin: 0;
+}
+.box .accordion-body .parent2 .div1 {
+  grid-area: 1/1/2/2;
+}
+.box .accordion-body .parent2 .div2 {
+  grid-area: 1/2/2/3;
+  text-align: left;
+  margin-left: 10px;
+}
+.box .accordion-body .parent2 .div3 {
+  grid-area: 1/3/2/4;
+}
+.box .accordion-body .parent2 .div4 {
+  grid-area: 1/4/2/5;
+}
+.box .accordion-body .parent2 .div4 .btnCarrito {
+  padding: 1px 7px 2px 6px;
+  background-color: rgb(103, 195, 222);
+  border-radius: 6px;
+  margin-left: 10px;
+}
+.box .accordion-body .parent2 .div5 {
+  grid-area: 2/1/3/2;
+}
+.box .accordion-body .parent2 .div6 {
+  grid-area: 2/2/3/3;
+  text-align: left;
+  margin-left: 10px;
+}
+.box .accordion-body .parent2 .div7 {
+  grid-area: 2/3/3/4;
+}
+.box .accordion-body .parent2 .div8 {
+  grid-area: 2/4/3/5;
+}
+.box .accordion-body .parent2 .div8 .btnCarrito {
+  padding: 1px 7px 2px 6px;
+  background-color: rgb(103, 195, 222);
+  border-radius: 6px;
+  margin-left: 10px;
+}
+.box .accordion-body .parent2 .div9 {
+  grid-area: 3/1/4/2;
+}
+.box .accordion-body .parent2 .div10 {
+  grid-area: 3/2/4/3;
+  text-align: left;
+  margin-left: 10px;
+}
+.box .accordion-body .parent2 .div11 {
+  grid-area: 3/3/4/4;
+}
+.box .accordion-body .parent2 .div12 {
+  grid-area: 3/4/4/5;
+}
+.box .accordion-body .parent2 .div12 .btnCarrito {
+  padding: 1px 7px 2px 6px;
+  background-color: rgb(103, 195, 222);
+  border-radius: 6px;
+  margin-left: 10px;
 }
 
 .cardProductos {
@@ -680,13 +802,15 @@ div .boxContacto .pregFrec {
 .cardProductos .cardBody .contenedorColores .aqua {
   background-color: aqua;
 }
-.cardProductos .cardBody .contenedorColores .fuchsia, .cardProductos .cardBody .contenedorColores .fuchsia2 {
+.cardProductos .cardBody .contenedorColores .fuchsia,
+.cardProductos .cardBody .contenedorColores .fuchsia2 {
   background-color: fuchsia;
 }
 .cardProductos .cardBody .contenedorColores .negro {
   background-color: black;
 }
-.cardProductos .cardBody .contenedorColores .verde, .cardProductos .cardBody .contenedorColores .verde2 {
+.cardProductos .cardBody .contenedorColores .verde,
+.cardProductos .cardBody .contenedorColores .verde2 {
   background-color: green;
 }
 .cardProductos .cardBody .contenedorColores .azul {
@@ -704,14 +828,14 @@ div .boxContacto .pregFrec {
 .cardProductos .cardBody .price {
   margin-top: 0.5rem;
 }
-.cardProductos .cardBody .botonCarrito {
+.cardProductos .cardBody .btnCarrito {
   padding: 3px;
   width: fit-content;
   background-color: rgb(103, 195, 222);
   text-transform: uppercase;
   width: 100%;
 }
-.cardProductos .cardBody .botonCarrito:hover {
+.cardProductos .cardBody .btnCarrito:hover {
   color: black;
   border: 2px solid rgb(103, 195, 222);
   padding: 1px;
