@@ -1,4 +1,83 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Obtener el elemento de la imagen GRIP por su ID
+  let cambiarImgGrip = document.getElementById("productGrip");
+
+  // GRIP a verde
+  document.querySelector(".verde").addEventListener("click", function () {
+    cambiarImagenGrip("../img/GripVerde.jpg", "Grip Verde");
+  });
+
+  // GRIP a azul
+  document.querySelector(".azul").addEventListener("click", function () {
+    cambiarImagenGrip("../img/GripAzul.jpg", "Grip Azul");
+  });
+
+  // GRIP a rojo
+  document.querySelector(".rojo").addEventListener("click", function () {
+    cambiarImagenGrip("../img/GripRojo.jpg", "Grip Rojo");
+  });
+
+  // GRIP a amarillo
+  document.querySelector(".amarillo").addEventListener("click", function () {
+    cambiarImagenGrip("../img/GripAmarillo.jpg", "Grip Amarillo");
+  });
+
+  // Obtener el elemento de la imagen GUANTE por su ID
+  let cambiarImgGuante = document.getElementById("productGuante");
+
+  // GUANTE a aqua
+  document.querySelector(".aqua").addEventListener("click", function () {
+    cambiarImagenGuante("../img/GuanteAqua.jpg", "Guante Aqua");
+  });
+
+  // GUANTE a fucsia
+  document.querySelector(".fuchsia").addEventListener("click", function () {
+    cambiarImagenGuante("../img/GuanteFucsia.jpg", "Guante Fucsia");
+  });
+
+  // GUANTE a negro
+  document.querySelector(".negro").addEventListener("click", function () {
+    cambiarImagenGuante("../img/GuanteNegro.jpg", "Guante Negro");
+  });
+
+  // Obtener el elemento de la imagen TABLA por su ID
+  let cambiarImgTabla = document.getElementById("productTabla");
+
+  // TABLA blanca
+  document.querySelector(".blanca").addEventListener("click", function () {
+    cambiarImagenTabla("../img/TablaEntrenadorBlanca.jpg", "Tabla Entrenado Blanca");
+  });
+
+    // TABLA fucsia
+    document.querySelector(".fuchsia2").addEventListener("click", function () {
+      cambiarImagenTabla("../img/TablaEntrenadorRosada.jpg", "Tabla Entrenador Fucsia");
+    });
+
+   // TABLA blanca
+   document.querySelector(".verde2").addEventListener("click", function () {
+    cambiarImagenTabla("../img/TablaEntrenadorVerde.jpg", "Tabla Entrenado Blanca");
+  });   
+
+  // Función para cambiar la imagen GRIP
+  function cambiarImagenGrip(src, alt) {
+    cambiarImgGrip.setAttribute("src", src);
+    cambiarImgGrip.setAttribute("alt", alt);
+  }
+
+  // Función para cambiar la imagen GUANTE
+  function cambiarImagenGuante(src, alt) {
+    cambiarImgGuante.setAttribute("src", src);
+    cambiarImgGuante.setAttribute("alt", alt);
+  }
+
+    // Función para cambiar la imagen TABLA
+    function cambiarImagenTabla(src, alt) {
+      cambiarImgTabla.setAttribute("src", src);
+      cambiarImgTabla.setAttribute("alt", alt);
+    }
+});
+
+/* document.addEventListener("DOMContentLoaded", function () {
   const productos = [
     {
       nombre: "Programas para niños",
@@ -88,7 +167,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Inicializar la interfaz
   mostrarProductos();
-});
+}); */
+
 /* const productos = [
     {
       nombre: "Programas para niños",

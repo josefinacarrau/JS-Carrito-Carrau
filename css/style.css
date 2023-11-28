@@ -680,14 +680,17 @@ div .boxContacto .pregFrec {
 .cardProductos .cardBody .contenedorColores .aqua {
   background-color: aqua;
 }
-.cardProductos .cardBody .contenedorColores .fuchsia {
+.cardProductos .cardBody .contenedorColores .fuchsia, .cardProductos .cardBody .contenedorColores .fuchsia2 {
   background-color: fuchsia;
 }
-.cardProductos .cardBody .contenedorColores .black {
+.cardProductos .cardBody .contenedorColores .negro {
   background-color: black;
 }
-.cardProductos .cardBody .contenedorColores .verde {
+.cardProductos .cardBody .contenedorColores .verde, .cardProductos .cardBody .contenedorColores .verde2 {
   background-color: green;
+}
+.cardProductos .cardBody .contenedorColores .azul {
+  background-color: blue;
 }
 .cardProductos .cardBody .contenedorColores .rojo {
   background-color: red;
