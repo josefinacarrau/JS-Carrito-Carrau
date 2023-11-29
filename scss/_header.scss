@@ -19,21 +19,20 @@ header {
             position: relative;
             i {
               color: $colorBase;
-              cursor: pointer;
             }
-            #carrito {
+            #carritoHeader {
               display: none;
-            }
-            &:hover {
-              display: block;
-              position: absolute;
-              right: 0;
-              top: 100%;
-              z-index: 1;
-              background-color: white;
-              padding: 20px;
-              min-height: 400px;
-              min-width: 300px;
+              &:hover {
+                display: block;
+                position: absolute;
+                right: 0;
+                top: 100%;
+                z-index: 1;
+                background-color: white;
+                padding: 20px;
+                min-height: 400px;
+                min-width: 300px;
+              }
             }
           }
         }

@@ -65,7 +65,6 @@
 
     <!-- Script de JS -->
     <script src="../js/entrega3.js" defer></script>
-    <script src="../js/prueba.js" defer></script>
 
     <title>Cimarronas Masterclass - Carrito</title>
   </head>
@@ -137,8 +136,8 @@
                     id="iconCarrito"
                     style="color: rgb(103, 195, 222)"
                   ></i>
-                  <div id="carrito" class=".open">
-                    <table id="listaCarrito" class="u-full-width">
+                  <!--                   <div id="carritoHeader" class="open">
+                    <table id="listaCarritoHeader" class="u-full-width">
                       <thead>
                         <tr>
                           <th>Imagen</th>
@@ -150,13 +149,19 @@
                       </thead>
                       <tbody></tbody>
                     </table>
-                    <a href="#" id="vaciarCarrito" class="boton u-full-width"
+                    <a
+                      href="#"
+                      id="vaciarCarritoHeader"
+                      class="boton u-full-width"
                       >Vaciar Carrito</a
                     >
-                    <a href="#" id="modificarCarrito" class="boton u-full-width"
+                    <a
+                      href="#"
+                      id="modificarCarritoHeader"
+                      class="boton u-full-width"
                       >Modificar Carrito</a
                     >
-                  </div>
+                  </div> -->
                 </div>
               </li>
             </ul>
@@ -696,22 +701,19 @@
 
         <div id="carrito">
           <h2>Carrito</h2>
-          <div class="text-center">
-            <table class="u-full-width" id="listaCarrito">
-              <thead>
-                <tr>
-                  <th>Imagen</th>
-                  <th>Nombre</th>
-                  <th>Precio</th>
-                  <th>Cantidad</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
-          <p id="total">Total: $0</p>
-
+          <table id="listaCarrito">
+            <thead>
+              <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <p id="total">Total:</p>
           <div>
             <button class="btn btnCarrito" id="vaciarCarrito" data-id="100">
               Vaciar carrito

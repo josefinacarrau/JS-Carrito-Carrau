@@ -148,6 +148,9 @@
   .box .accordion-header .h3Carrito {
     font-size: 1.5rem !important;
   }
+  #carrito {
+    max-width: 100%;
+  }
 }
 @media (min-width: 769px) and (max-width: 992px) {
   main .background-image {
@@ -231,12 +234,11 @@ header nav div ul li .submenu {
 }
 header nav div ul li .submenu i {
   color: rgb(103, 195, 222);
-  cursor: pointer;
 }
-header nav div ul li .submenu #carrito {
+header nav div ul li .submenu #carritoHeader {
   display: none;
 }
-header nav div ul li .submenu:hover {
+header nav div ul li .submenu #carritoHeader:hover {
   display: block;
   position: absolute;
   right: 0;
@@ -815,6 +817,15 @@ div .boxContacto .pregFrec {
   background-color: white;
   border: 2px solid rgb(103, 195, 222);
   border-radius: 2px;
+}
+
+#carrito {
+  margin: auto;
+  padding: 20px;
+}
+#carrito #listaCarrito {
+  margin: auto;
+  width: 100%;
 }
 
 /*# sourceMappingURL=style.css.map */
