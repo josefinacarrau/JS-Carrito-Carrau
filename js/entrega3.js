@@ -66,107 +66,15 @@ agregarEvento(
   "Tabla Entrenador Verde"
 );
 
-//Codigo viejo misma funcion - cambiar las imagen con click en los colores
-/* document.addEventListener("DOMContentLoaded", function () {
-  // Obtener el elemento de la imagen GRIP por su ID
-  let cambiarImgGrip = document.getElementById("productGrip");
-
-  // GRIP a verde
-  document.querySelector(".verde").addEventListener("click", function () {
-    cambiarImagenGrip("../img/GripVerde.jpg", "Grip Verde");
-  });
-
-  // GRIP a azul
-  document.querySelector(".azul").addEventListener("click", function () {
-    cambiarImagenGrip("../img/GripAzul.jpg", "Grip Azul");
-  });
-
-  // GRIP a rojo
-  document.querySelector(".rojo").addEventListener("click", function () {
-    cambiarImagenGrip("../img/GripRojo.jpg", "Grip Rojo");
-  });
-
-  // GRIP a amarillo
-  document.querySelector(".amarillo").addEventListener("click", function () {
-    cambiarImagenGrip("../img/GripAmarillo.jpg", "Grip Amarillo");
-  });
-
-  // Obtener el elemento de la imagen GUANTE por su ID
-  let cambiarImgGuante = document.getElementById("productGuante");
-
-  // GUANTE a aqua
-  document.querySelector(".aqua").addEventListener("click", function () {
-    cambiarImagenGuante("../img/GuanteAqua.jpg", "Guante Aqua");
-  });
-
-  // GUANTE a fucsia
-  document.querySelector(".fuchsia").addEventListener("click", function () {
-    cambiarImagenGuante("../img/GuanteFucsia.jpg", "Guante Fucsia");
-  });
-
-  // GUANTE a negro
-  document.querySelector(".negro").addEventListener("click", function () {
-    cambiarImagenGuante("../img/GuanteNegro.jpg", "Guante Negro");
-  });
-
-  // Obtener el elemento de la imagen TABLA por su ID
-  let cambiarImgTabla = document.getElementById("productTabla");
-
-  // Tabla a blanca
-  document.querySelector(".blanca").addEventListener("click", function () {
-    cambiarImagenTabla(
-      "../img/TablaEntrenadorBlanca.jpg",
-      "Tabla Entrenador Blanca"
-    );
-  });
-
-  // Tabla a fucsia
-  document.querySelector(".fuchsia2").addEventListener("click", function () {
-    cambiarImagenTabla(
-      "../img/TablaEntrenadorFucsia.jpg",
-      "Tabla Entrenador Fucsia"
-    );
-  });
-
-  // Tabla a verde
-  document.querySelector(".verde2").addEventListener("click", function () {
-    cambiarImagenTabla(
-      "../img/TablaEntrenadorVerde.jpg",
-      "Tabla Entrenador Verde"
-    );
-  });
-
-  // Función para cambiar la imagen GRIP
-  function cambiarImagenGrip(src, alt) {
-    cambiarImgGrip.setAttribute("src", src);
-    cambiarImgGrip.setAttribute("alt", alt);
-  }
-
-  // Función para cambiar la imagen GUANTE
-  function cambiarImagenGuante(src, alt) {
-    cambiarImgGuante.setAttribute("src", src);
-    cambiarImgGuante.setAttribute("alt", alt);
-  }
-
-  // Función para cambiar la imagen TABLA
-  function cambiarImagenTabla(src, alt) {
-    cambiarImgTabla.setAttribute("src", src);
-    cambiarImgTabla.setAttribute("alt", alt);
-  }
-}); */
-
 //------------------------------------------------------------------------------------------------
 
-/* let articulosCarrito = [];
+let articulosCarrito = [];
 
-const listaProductos = document.querySelector("#listaProgramas");
-
-const contenedorCarrito = document.querySelector("#listaCarrito tbody");
-
+//const listaProgramas = document.querySelector("#listaProgramas");
+const listaAccesorios = document.querySelector("#listaAccesorios");
+const contenedorCarrito = document.querySelector("#listaCarrito");
 const vaciarCarritoBtn = document.querySelector("#vaciarCarrito");
-
-const modificarCarrito = document.querySelector("#modificarCarrito");
-
+//const modificarCarrito = document.querySelector("#modificarCarrito");
 
 function agregarProducto(evt) {
   if (evt.target.classList.contains("btnCarrito")) {
@@ -175,17 +83,17 @@ function agregarProducto(evt) {
   }
 }
 
-function leerDatosProducto(item){
-  const infoPrograma = {
-    nombre : item.querySelector("nombre").textContent,
-    precio : item.querySelector('precio').textContent,
-    //horas : item.querySelector()
-    id: item.querySelector("i").getAttribute("data-id"),
+function leerDatosProducto(item) {
+  const infoProducto = {
+    imagen: item.querySelector(".imgProducto").src,
+    nombre: item.querySelector("h3").textContent,
+    precio: parseFloat(item.querySelector(".price").textContent),
+    id: item.querySelector("button").getAttribute("data-id"),
     cantidad: 1,
   };
-  if (articulosCarrito.some((prod) => prod.id === infoPrograma.id)) {
+  if (articulosCarrito.some((prod) => prod.id === infoProducto.id)) {
     const productos = articulosCarrito.map((producto) => {
-      if (producto.id === infoPrograma.id) {
+      if (producto.id === infoProducto.id) {
         let cantidad = parseInt(producto.cantidad);
         cantidad += 1;
         producto.cantidad = cantidad;
@@ -194,31 +102,41 @@ function leerDatosProducto(item){
         return producto;
       }
     });
-    //articulosCarrito = productos.slice();
     articulosCarrito = [...productos];
   } else {
-    //articulosCarrito.push(infoProducto);
-    articulosCarrito = [...articulosCarrito, infoPrograma];
+    articulosCarrito = [...articulosCarrito, infoProducto];
   }
   dibujarCarritoHTML();
 }
 
 function dibujarCarritoHTML() {
+  // Limpiar el contenido del carrito antes de dibujar
   limpiarCarrito();
+
+  // Dibujar cada producto en el carrito
   articulosCarrito.forEach((producto) => {
     const fila = document.createElement("tr");
+    // Verificar si producto.precio es un número antes de llamar a toFixed
+    const precioFormateado =
+      typeof producto.precio === "number"
+        ? `$${producto.precio.toFixed(2)}`
+        : "Precio no válido";
+
     fila.innerHTML = `
-        // <td><img src="${producto.imagen}" width="100" /></td>
-        <td> ${producto.nombre}</td>
-        <td> ${producto.precio}</td>
-        <td> ${producto.cantidad}</td>
-        <td>
-            <a href="#" class="borrar-producto" data-id="${producto.id}">❌</a>
-        </td>
-        `;
+      <td><img src="${producto.imagen}" width="100" /></td>
+      <td>${producto.nombre}</td>
+      <td>${precioFormateado}</td>
+      <td>${producto.cantidad}</td>
+      <td><a href="#" class="borrar-producto" data-id="${producto.id}">❌</a></td>
+    `;
+
     contenedorCarrito.appendChild(fila);
   });
+  // Sincronizar con el almacenamiento local
   sincronizarStorage();
+
+  // Calcular y mostrar el total del carrito
+  calcularTotal();
 }
 
 function limpiarCarrito() {
@@ -228,23 +146,19 @@ function limpiarCarrito() {
 }
 
 function vaciarCarrito() {
-  while (contenedorCarrito.firstChild) {
-    contenedorCarrito.removeChild(contenedorCarrito.firstChild);
-  }
+  limpiarCarrito();
   articulosCarrito = [];
   sincronizarStorage();
+  calcularTotal();
 }
 
 function eliminarProducto(evt) {
   evt.preventDefault();
-  //console.log(evt.target.classList.contains("borrar-producto"));
   if (evt.target.classList.contains("borrar-producto")) {
-    const producto = evt.target.parentElement.parentElement;
-    const productoId = producto.querySelector("a").getAttribute("data-id");
+    const productoId = evt.target.getAttribute("data-id");
     articulosCarrito = articulosCarrito.filter(
       (producto) => producto.id !== productoId
     );
-    //console.log(producto);
     dibujarCarritoHTML();
   }
 }
@@ -254,40 +168,29 @@ function sincronizarStorage() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  //console.log("cargo el dom");
   articulosCarrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
   dibujarCarritoHTML();
 });
 
-listaProductos.addEventListener("click", agregarProducto);
+listaAccesorios.addEventListener("click", agregarProducto);
 vaciarCarritoBtn.addEventListener("click", vaciarCarrito);
-carrito.addEventListener("click", eliminarProducto); */
+contenedorCarrito.addEventListener("click", eliminarProducto);
 
+// Función para calcular el total del carrito
+const calcularTotal = () => {
+  let total = 0;
+  articulosCarrito.forEach((producto) => {
+    if (typeof producto.precio === "number") {
+      total += producto.precio * producto.cantidad;
+    }
+  });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  // Mostrar el total en algún elemento del HTML (debe estar definido en tu HTML)
+  const totalElemento = document.getElementById("totalCarrito");
+  if (totalElemento) {
+    totalElemento.innerText = `Total: $${total.toFixed(2)}`;
+  }
+};
 
 /*   const productos = [
     {
