@@ -85,6 +85,18 @@
   .box .accordion-header .h3Carrito {
     font-size: 1.3rem !important;
   }
+  .carrito .box {
+    flex: 0 0 50%; /* 2 cajas por línea */
+  }
+  .carrito .box .accordion-header .h3Carrito {
+    font-size: 1.2rem !important;
+  }
+  .carrito #carrito {
+    max-width: 100%;
+  }
+  .carrito #listaAccesorios .h3Carrito {
+    font-size: 1.2rem !important;
+  }
 }
 /* Estilos responsivos para pantallas medianas (entre 577px y 768px) */
 @media (min-width: 577px) and (max-width: 768px) {
@@ -98,7 +110,7 @@
     font-size: 1.8rem !important;
   }
   main .index div h3 {
-    font-size: 1.7rem !important;
+    font-size: 1.7rem;
   }
   main .index div div .imgMain {
     width: 80%;
@@ -128,7 +140,7 @@
     padding-right: 25px;
   }
   .boxContacto h3 {
-    font-size: 1.4rem !important;
+    font-size: 1.4rem;
   }
   .boxContacto h4 {
     font-size: 1.1rem !important;
@@ -142,14 +154,17 @@
   .programas h4 {
     font-size: 1.1rem !important;
   }
-  .box {
+  .carrito .box {
     flex: 0 0 50%; /* 2 cajas por línea */
   }
-  .box .accordion-header .h3Carrito {
+  .carrito .box .accordion-header .h3Carrito {
     font-size: 1.5rem !important;
   }
-  #carrito {
+  .carrito #carrito {
     max-width: 100%;
+  }
+  .carrito #listaAccesorios .h3Carrito {
+    font-size: 1.5rem !important;
   }
 }
 @media (min-width: 769px) and (max-width: 992px) {
@@ -163,7 +178,7 @@
     font-size: 2rem !important;
   }
   main .index div h3 {
-    font-size: 2rem !important;
+    font-size: 2rem;
   }
   main .index div h4 {
     font-size: 1.4rem !important;
@@ -209,6 +224,18 @@
   }
   .box .accordion-header .h3Carrito {
     font-size: 1.7rem !important;
+  }
+  .carrito .box {
+    flex: 0 0 50%; /* 2 cajas por línea */
+  }
+  .carrito .box .accordion-header .h3Carrito {
+    font-size: 1.8rem !important;
+  }
+  .carrito #carrito {
+    max-width: 100%;
+  }
+  .carrito #listaAccesorios .h3Carrito {
+    font-size: 1.8rem !important;
   }
 }
 @media (min-width: 992px) {
@@ -623,7 +650,7 @@ div .boxContacto .pregFrec {
   text-align: justify;
 }
 
-.box {
+.carrito .box {
   background-color: #ffffff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   margin: 10px;
@@ -632,21 +659,21 @@ div .boxContacto .pregFrec {
   flex: 1 !important; /* Hace que las cajas ocupen el mismo ancho y se coloquen en fila */
   font-family: "Playfair Display";
 }
-.box .imgCarrito {
+.carrito .box .imgCarrito {
   height: auto;
   max-width: 80%;
   display: block; /* Elimina el espacio extra debajo de la imagen */
   margin: auto; /* Centra la imagen dentro de su contenedor */
 }
-.box .accordion-button {
+.carrito .box .accordion-button {
   width: auto;
   display: inline;
 }
-.box .accordion-body {
+.carrito .box .accordion-body {
   width: 100%;
   padding: 5px !important;
 }
-.box .accordion-body .parent {
+.carrito .box .accordion-body .parent {
   display: grid;
   grid-template-columns: 0.3333fr 2fr 1.3333fr 0.333fr;
   grid-template-rows: repeat(2, 1fr);
@@ -657,39 +684,39 @@ div .boxContacto .pregFrec {
   width: 100%;
   padding: 5px;
 }
-.box .accordion-body .parent p {
+.carrito .box .accordion-body .parent p {
   white-space: nowrap;
   margin: 0;
 }
-.box .accordion-body .parent .div1 {
+.carrito .box .accordion-body .parent .div1 {
   grid-area: 1/1/2/2;
 }
-.box .accordion-body .parent .div2 {
+.carrito .box .accordion-body .parent .div2 {
   grid-area: 1/2/2/3;
   text-align: left;
   margin-left: 10px;
 }
-.box .accordion-body .parent .div3 {
+.carrito .box .accordion-body .parent .div3 {
   grid-area: 1/3/2/4;
 }
-.box .accordion-body .parent .div4 {
+.carrito .box .accordion-body .parent .div4 {
   grid-area: 1/4/2/5;
 }
-.box .accordion-body .parent .div5 {
+.carrito .box .accordion-body .parent .div5 {
   grid-area: 2/1/3/2;
 }
-.box .accordion-body .parent .div6 {
+.carrito .box .accordion-body .parent .div6 {
   grid-area: 2/2/3/3;
   text-align: left;
   margin-left: 10px;
 }
-.box .accordion-body .parent .div7 {
+.carrito .box .accordion-body .parent .div7 {
   grid-area: 2/3/3/4;
 }
-.box .accordion-body .parent .div8 {
+.carrito .box .accordion-body .parent .div8 {
   grid-area: 2/4/3/5;
 }
-.box .accordion-body .parent2 {
+.carrito .box .accordion-body .parent2 {
   display: grid;
   grid-template-columns: 0.3333fr 2fr 1.3333fr 0.333fr;
   grid-template-rows: repeat(3, 1fr);
@@ -700,54 +727,53 @@ div .boxContacto .pregFrec {
   width: 100%;
   padding: 5px;
 }
-.box .accordion-body .parent2 p {
+.carrito .box .accordion-body .parent2 p {
   white-space: nowrap;
   margin: 0;
 }
-.box .accordion-body .parent2 .div1 {
+.carrito .box .accordion-body .parent2 .div1 {
   grid-area: 1/1/2/2;
 }
-.box .accordion-body .parent2 .div2 {
+.carrito .box .accordion-body .parent2 .div2 {
   grid-area: 1/2/2/3;
   text-align: left;
   margin-left: 10px;
 }
-.box .accordion-body .parent2 .div3 {
+.carrito .box .accordion-body .parent2 .div3 {
   grid-area: 1/3/2/4;
 }
-.box .accordion-body .parent2 .div4 {
+.carrito .box .accordion-body .parent2 .div4 {
   grid-area: 1/4/2/5;
 }
-.box .accordion-body .parent2 .div5 {
+.carrito .box .accordion-body .parent2 .div5 {
   grid-area: 2/1/3/2;
 }
-.box .accordion-body .parent2 .div6 {
+.carrito .box .accordion-body .parent2 .div6 {
   grid-area: 2/2/3/3;
   text-align: left;
   margin-left: 10px;
 }
-.box .accordion-body .parent2 .div7 {
+.carrito .box .accordion-body .parent2 .div7 {
   grid-area: 2/3/3/4;
 }
-.box .accordion-body .parent2 .div8 {
+.carrito .box .accordion-body .parent2 .div8 {
   grid-area: 2/4/3/5;
 }
-.box .accordion-body .parent2 .div9 {
+.carrito .box .accordion-body .parent2 .div9 {
   grid-area: 3/1/4/2;
 }
-.box .accordion-body .parent2 .div10 {
+.carrito .box .accordion-body .parent2 .div10 {
   grid-area: 3/2/4/3;
   text-align: left;
   margin-left: 10px;
 }
-.box .accordion-body .parent2 .div11 {
+.carrito .box .accordion-body .parent2 .div11 {
   grid-area: 3/3/4/4;
 }
-.box .accordion-body .parent2 .div12 {
+.carrito .box .accordion-body .parent2 .div12 {
   grid-area: 3/4/4/5;
 }
-
-.cardProductos {
+.carrito .cardProductos {
   border: white solid 3px;
   border-radius: 5px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
@@ -756,74 +782,69 @@ div .boxContacto .pregFrec {
   width: 100%;
   position: relative;
 }
-.cardProductos .imgProducto {
+.carrito .cardProductos .imgProducto {
   height: 150px;
   width: auto;
 }
-.cardProductos .cardBody .h3Carrito {
-  font-size: 1.4rem;
-}
-.cardProductos .cardBody .contenedorColores {
+.carrito .cardProductos .cardBody .contenedorColores {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
 }
-.cardProductos .cardBody .contenedorColores .colorBox {
+.carrito .cardProductos .cardBody .contenedorColores .colorBox {
   border: 2px solid black;
   border-radius: 10px;
   margin: 0 5px;
   height: 20px;
   width: 20px;
 }
-.cardProductos .cardBody .contenedorColores .aqua {
+.carrito .cardProductos .cardBody .contenedorColores .aqua {
   background-color: aqua;
 }
-.cardProductos .cardBody .contenedorColores .fuchsia,
-.cardProductos .cardBody .contenedorColores .fuchsia2 {
+.carrito .cardProductos .cardBody .contenedorColores .fuchsia,
+.carrito .cardProductos .cardBody .contenedorColores .fuchsia2 {
   background-color: fuchsia;
 }
-.cardProductos .cardBody .contenedorColores .negro {
+.carrito .cardProductos .cardBody .contenedorColores .negro {
   background-color: black;
 }
-.cardProductos .cardBody .contenedorColores .verde,
-.cardProductos .cardBody .contenedorColores .verde2 {
+.carrito .cardProductos .cardBody .contenedorColores .verde,
+.carrito .cardProductos .cardBody .contenedorColores .verde2 {
   background-color: green;
 }
-.cardProductos .cardBody .contenedorColores .azul {
+.carrito .cardProductos .cardBody .contenedorColores .azul {
   background-color: blue;
 }
-.cardProductos .cardBody .contenedorColores .rojo {
+.carrito .cardProductos .cardBody .contenedorColores .rojo {
   background-color: red;
 }
-.cardProductos .cardBody .contenedorColores .amarillo {
+.carrito .cardProductos .cardBody .contenedorColores .amarillo {
   background-color: yellow;
 }
-.cardProductos .cardBody .contenedorColores .blanca {
+.carrito .cardProductos .cardBody .contenedorColores .blanca {
   background-color: white;
 }
-.cardProductos .cardBody .price {
+.carrito .cardProductos .cardBody .price {
   margin-top: 0.5rem;
 }
-
-.btnCarrito {
+.carrito .btnCarrito {
   padding: 1px 7px 2px 6px;
   background-color: rgb(103, 195, 222);
   border-radius: 6px;
   margin-left: 10px;
 }
-.btnCarrito:hover {
+.carrito .btnCarrito:hover {
   background-color: white;
   border: 2px solid rgb(103, 195, 222);
   border-radius: 2px;
 }
-
-#carrito {
+.carrito #carrito {
   margin: auto;
   padding: 20px;
 }
-#carrito #listaCarrito {
+.carrito #carrito #listaCarrito {
   margin: auto;
   width: 100%;
 }

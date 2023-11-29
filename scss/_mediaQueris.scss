@@ -92,6 +92,24 @@
       }
     }
   }
+  .carrito {
+    .box {
+      flex: 0 0 50%; /* 2 cajas por línea */
+      .accordion-header {
+        .h3Carrito {
+          font-size: 1.2rem !important;
+        }
+      }
+    }
+    #carrito {
+      max-width: 100%;
+    }
+    #listaAccesorios {
+      .h3Carrito {
+        font-size: 1.2rem !important;
+      }
+    }
+  }
 }
 
 /* Estilos responsivos para pantallas medianas (entre 577px y 768px) */
@@ -111,7 +129,7 @@
     .index {
       div {
         h3 {
-          font-size: 1.7rem !important;
+          font-size: 1.7rem;
         }
         div {
           .imgMain {
@@ -151,7 +169,7 @@
   }
   .boxContacto {
     h3 {
-      font-size: 1.4rem !important;
+      font-size: 1.4rem;
     }
     h4 {
       font-size: 1.1rem !important;
@@ -170,16 +188,23 @@
       font-size: 1.1rem !important;
     }
   }
-  .box {
-    flex: 0 0 50%; /* 2 cajas por línea */
-    .accordion-header {
+  .carrito {
+    .box {
+      flex: 0 0 50%; /* 2 cajas por línea */
+      .accordion-header {
+        .h3Carrito {
+          font-size: 1.5rem !important;
+        }
+      }
+    }
+    #carrito {
+      max-width: 100%;
+    }
+    #listaAccesorios {
       .h3Carrito {
         font-size: 1.5rem !important;
       }
     }
-  }
-  #carrito {
-    max-width: 100%;
   }
 }
 
@@ -200,7 +225,7 @@
     .index {
       div {
         h3 {
-          font-size: 2rem !important;
+          font-size: 2rem;
         }
       }
       div {
@@ -259,6 +284,24 @@
     .accordion-header {
       .h3Carrito {
         font-size: 1.7rem !important;
+      }
+    }
+  }
+  .carrito {
+    .box {
+      flex: 0 0 50%; /* 2 cajas por línea */
+      .accordion-header {
+        .h3Carrito {
+          font-size: 1.8rem !important;
+        }
+      }
+    }
+    #carrito {
+      max-width: 100%;
+    }
+    #listaAccesorios {
+      .h3Carrito {
+        font-size: 1.8rem !important;
       }
     }
   }
