@@ -1,67 +1,84 @@
-//Cambiar imagen al seleccionar color desado.
 // Función para cambiar la imagen de un elemento
 function cambiarImagen(elemento, src, alt) {
   elemento.setAttribute("src", src);
   elemento.setAttribute("alt", alt);
 }
 
-// Función para agregar eventos a los elementos
-function agregarEvento(selector, imgElemento, src, alt) {
-  document.querySelector(selector).addEventListener("click", function () {
-    cambiarImagen(imgElemento, src, alt);
+// Function to handle color box click
+function handleColorBoxClick(colorBox, imgElement, src, alt) {
+  colorBox.addEventListener("click", function () {
+    cambiarImagen(imgElement, src, alt);
   });
 }
 
-// Imágenes de GRIP
-let cambiarImgGrip = document.getElementById("productGrip");
-agregarEvento(".verde", cambiarImgGrip, "../img/GripVerde.jpg", "Grip Verde");
-agregarEvento(".azul", cambiarImgGrip, "../img/GripAzul.jpg", "Grip Azul");
-agregarEvento(".rojo", cambiarImgGrip, "../img/GripRojo.jpg", "Grip Rojo");
-agregarEvento(
-  ".amarillo",
-  cambiarImgGrip,
+// Grip product
+let productGripImg = document.getElementById("productGrip");
+
+handleColorBoxClick(
+  document.querySelector(".verde"),
+  productGripImg,
+  "../img/GripVerde.jpg",
+  "Grip Verde"
+);
+handleColorBoxClick(
+  document.querySelector(".azul"),
+  productGripImg,
+  "../img/GripAzul.jpg",
+  "Grip Azul"
+);
+handleColorBoxClick(
+  document.querySelector(".rojo"),
+  productGripImg,
+  "../img/GripRojo.jpg",
+  "Grip Rojo"
+);
+handleColorBoxClick(
+  document.querySelector(".amarillo"),
+  productGripImg,
   "../img/GripAmarillo.jpg",
   "Grip Amarillo"
 );
 
-// Imágenes de GUANTE
-let cambiarImgGuante = document.getElementById("productGuante");
-agregarEvento(
-  ".aqua",
-  cambiarImgGuante,
+// Guantes product
+let productGuanteImg = document.getElementById("productGuante");
+
+handleColorBoxClick(
+  document.querySelector(".aqua"),
+  productGuanteImg,
   "../img/GuanteAqua.jpg",
   "Guante Aqua"
 );
-agregarEvento(
-  ".fuchsia",
-  cambiarImgGuante,
+handleColorBoxClick(
+  document.querySelector(".fuchsia"),
+  productGuanteImg,
   "../img/GuanteFucsia.jpg",
   "Guante Fucsia"
 );
-agregarEvento(
-  ".negro",
-  cambiarImgGuante,
+handleColorBoxClick(
+  document.querySelector(".negro"),
+  productGuanteImg,
   "../img/GuanteNegro.jpg",
   "Guante Negro"
 );
 
-// Imágenes de TABLA
-let cambiarImgTabla = document.getElementById("productTabla");
-agregarEvento(
-  ".blanca",
-  cambiarImgTabla,
+// Tabla product
+let productTablaImg = document.getElementById("productTabla");
+
+handleColorBoxClick(
+  document.querySelector(".blanca"),
+  productTablaImg,
   "../img/TablaEntrenadorBlanca.jpg",
   "Tabla Entrenador Blanca"
 );
-agregarEvento(
-  ".fuchsia2",
-  cambiarImgTabla,
+handleColorBoxClick(
+  document.querySelector(".fuchsia2"),
+  productTablaImg,
   "../img/TablaEntrenadorFucsia.jpg",
   "Tabla Entrenador Fucsia"
 );
-agregarEvento(
-  ".verde2",
-  cambiarImgTabla,
+handleColorBoxClick(
+  document.querySelector(".verde2"),
+  productTablaImg,
   "../img/TablaEntrenadorVerde.jpg",
   "Tabla Entrenador Verde"
 );
@@ -118,7 +135,7 @@ function dibujarCarritoHTML() {
   // Limpiar el contenido del carrito antes de dibujar
   limpiarCarrito();
 
-  // Dibujar cada producto en el carrito
+ // Dibujar cada producto en el carrito
   articulosCarrito.forEach((producto) => {
     const fila = document.createElement("tr");
     // Verificar si producto.precio es un número antes de llamar a toFixed
@@ -132,7 +149,7 @@ function dibujarCarritoHTML() {
       <td>${producto.nombre}</td>
       <td>${precioFormateado}</td>
       <td>${producto.cantidad}</td>
-      <td><button href="#" class="borrar-producto" data-id="${producto.id}">❌</button></td>
+      <td> <a href="#" class="borrar-producto" data-id="${producto.id}">❌</a></td>
     `;
 
     contenedorCarrito.querySelector("tbody").appendChild(fila);
@@ -287,3 +304,4 @@ const calcularTotal = () => {
   // Inicializar la interfaz
   mostrarProductos();
  */
+ 
