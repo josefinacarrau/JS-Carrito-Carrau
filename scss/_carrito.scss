@@ -8,7 +8,7 @@
   font-family: $estiloLetra;
   .imgCarrito {
     height: auto;
-    max-width: 100%;
+    max-width: 80%;
     display: block; /* Elimina el espacio extra debajo de la imagen */
     margin: auto; /* Centra la imagen dentro de su contenedor */
   }
@@ -51,6 +51,11 @@
           background-color: $colorBase;
           border-radius: 6px;
           margin-left:10px;
+          &:hover{
+            background-color: white;
+            border: 2px solid $colorBase;
+            border-radius: 2px;
+          }
           //  justify-content: flex-end;
         }
       }
@@ -72,6 +77,11 @@
           background-color: $colorBase;
           border-radius: 6px;
           margin-left: 10px;
+          &:hover{
+            background-color: white;
+            border: 2px solid $colorBase;
+            border-radius: 2px;
+          }
         }
       }
     }
@@ -107,6 +117,11 @@
           background-color: $colorBase;
           border-radius: 6px;
           margin-left: 10px;
+          &:hover{
+            background-color: white;
+            border: 2px solid $colorBase;
+            border-radius: 2px;
+          }
           //  justify-content: flex-end;
         }
       }
@@ -128,6 +143,11 @@
           background-color: $colorBase;
           border-radius: 6px;
           margin-left: 10px;
+          &:hover{
+            background-color: white;
+            border: 2px solid $colorBase;
+            border-radius: 2px;
+          }
         }
       }
       .div9 {
@@ -148,6 +168,11 @@
           background-color: $colorBase;
           border-radius: 6px;
           margin-left: 10px;
+          &:hover{
+            background-color: white;
+            border: 2px solid $colorBase;
+            border-radius: 2px;
+          }
         }
       }
     }
@@ -224,37 +249,8 @@
         border: 2px solid $colorBase;
         padding: 1px;
         border-radius: 2px;
+        background-color: white;
       }
     }
-  }
-}
-
-/* Media queries para ajustar el diseño según el tamaño de la pantalla */
-
-@media (min-width: 576px) {
-  /* Pequeñas (sm) */
-  .box {
-    flex: 0 0 50%; /* 2 cajas por línea */
-  }
-}
-
-@media (min-width: 768px) {
-  /* Medianas (md) */
-  .box {
-    flex: 0 0 50%; /* 2 cajas por línea */
-  }
-}
-
-@media (min-width: 992px) {
-  /* Grandes (lg) */
-  .box {
-    flex: 0 0 33.333%; /* 3 cajas por línea */
-  }
-}
-
-@media (min-width: 1200px) {
-  /* Extra grandes (xl) */
-  .box {
-    flex: 0 0 33.333%; /* 3 cajas por línea */
   }
 }

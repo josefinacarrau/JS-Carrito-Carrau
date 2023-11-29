@@ -157,7 +157,7 @@ agregarEvento(
 
 //------------------------------------------------------------------------------------------------
 
-let articulosCarrito = [];
+/* let articulosCarrito = [];
 
 const listaProductos = document.querySelector("#listaProgramas");
 
@@ -262,7 +262,32 @@ window.addEventListener("DOMContentLoaded", () => {
 
 listaProductos.addEventListener("click", agregarProducto);
 vaciarCarritoBtn.addEventListener("click", vaciarCarrito);
-carrito.addEventListener("click", eliminarProducto);
+carrito.addEventListener("click", eliminarProducto); */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*   const productos = [
     {
