@@ -90,11 +90,14 @@ function leerDatosProducto(item) {
     imagen: imgProducto ? imgProducto.src : "../img/no_image.png", //if..else (condition ? valueIfTrue:valeIfFalse)
     nombre: item.querySelector("h3").textContent,
     precio: parseFloat(item.querySelector(".price").textContent),
-    id: item.querySelector("a").getAttribute("data-id"),
+    id: item.querySelector("button").getAttribute("data-id"),
     cantidad: 1,
   };
+  //console.log(infoProducto.id);
   if (articulosCarrito.some((prod) => prod.id === infoProducto.id)) {
+    //The some method stops iterating the array as soon as the callback returns true for any element.
     const productos = articulosCarrito.map((producto) => {
+      //The map method creates a new array with the results of calling the provided function on every element in the calling array.
       if (producto.id === infoProducto.id) {
         let cantidad = parseInt(producto.cantidad);
         cantidad += 1;
@@ -104,7 +107,7 @@ function leerDatosProducto(item) {
         return producto;
       }
     });
-    articulosCarrito = [...productos];
+    articulosCarrito = [...productos]; //... =spread - copia el array productos
   } else {
     articulosCarrito = [...articulosCarrito, infoProducto];
   }
@@ -129,10 +132,10 @@ function dibujarCarritoHTML() {
       <td>${producto.nombre}</td>
       <td>${precioFormateado}</td>
       <td>${producto.cantidad}</td>
-      <td><a href="#" class="borrar-producto" data-id="${producto.id}">❌</a></td>
+      <td><button href="#" class="borrar-producto" data-id="${producto.id}">❌</button></td>
     `;
 
-    contenedorCarrito.appendChild(fila);
+    contenedorCarrito.querySelector("tbody").appendChild(fila);
   });
   // Sincronizar con el almacenamiento local
   sincronizarStorage();
