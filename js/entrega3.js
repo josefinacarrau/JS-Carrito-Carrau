@@ -78,17 +78,19 @@ const vaciarCarritoBtn = document.querySelector("#vaciarCarrito");
 
 function agregarProducto(evt) {
   if (evt.target.classList.contains("btnCarrito")) {
-    const producto = evt.target.parentElement;
+    //console.log(evt.target.classList.contains("btnCarrito"));
+    const producto = evt.target.parentElement.parentElement;
     leerDatosProducto(producto);
   }
 }
 
 function leerDatosProducto(item) {
+  const imgProducto = item.querySelector(".imgProducto");
   const infoProducto = {
-    imagen: item.querySelector(".imgProducto").src,
+    imagen: imgProducto ? imgProducto.src : "../img/no_image.png", //if..else (condition ? valueIfTrue:valeIfFalse)
     nombre: item.querySelector("h3").textContent,
     precio: parseFloat(item.querySelector(".price").textContent),
-    id: item.querySelector("button").getAttribute("data-id"),
+    id: item.querySelector("a").getAttribute("data-id"),
     cantidad: 1,
   };
   if (articulosCarrito.some((prod) => prod.id === infoProducto.id)) {
