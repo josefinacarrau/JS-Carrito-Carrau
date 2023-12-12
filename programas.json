@@ -1,0 +1,74 @@
+{
+  "programas": [
+    {
+      "nombre": "Programas para niños",
+      "subProductos": [
+        {
+          "nombre": "Guardería de hockey",
+          "precio": 1500,
+          "porHora": true
+        },
+        {
+          "nombre": "Escuela",
+          "precio": 22000,
+          "porHora": false
+        },
+        {
+          "nombre": "Cadetes",
+          "precio": 19500,
+          "porHora": false
+        }
+      ]
+    },
+    {
+      "nombre": "Programas para adultos",
+      "subProductos": [
+        {
+          "nombre": "Básico",
+          "precio": 18500,
+          "porHora": true
+        },
+        {
+          "nombre": "Avanzadas",
+          "precio": 2500,
+          "porHora": true
+        },
+        {
+          "nombre": "Entrenamiento",
+          "precio": 20000,
+          "porHora": false
+        }
+      ]
+    },
+    {
+      "nombre": "Clases Privadas",
+      "subProductos": [
+        {
+          "nombre": "Básico",
+          "precio": 20500,
+          "porHora": false
+        },
+        {
+          "nombre": "Avanzadas",
+          "precio": 2500,
+          "porHora": true
+        }
+      ]
+    },
+    {
+      "nombre": "Entrenamiento Alto Rendimeinto",
+      "subProductos": [
+        {
+          "nombre": "Grupal",
+          "precio": 17500,
+          "porHora": false
+        },
+        {
+          "nombre": "Individual",
+          "precio": 20750,
+          "porHora": false
+        }
+      ]
+    }
+  ]
+}
