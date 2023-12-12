@@ -88,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let articulosCarrito = [];
 
   const listaAccesorios = document.querySelector("#listaAccesorios");
+  const listaProgramas = document.querySelector("#listaProgramas");
   const contenedorCarrito = document.querySelector("#listaCarrito tbody");
   const vaciarCarritoBtn = document.querySelector("#vaciarCarrito");
   const comprarCarrito = document.querySelector("#comprarCarrito");
@@ -115,14 +116,18 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .catch((error) => console.error("Error al cargar el archivo JSON:", error));
 
-  function agregarProducto(evt, programas) {
+  function agregarProducto(evt,programas) {
     if (evt.target.classList.contains("btnArticulo")) {
       const producto = evt.target.closest(".cardProductos");
-      leerDatosProducto(producto, programas);
+      leerDatosAccesorio(producto, programas);
     }
+    if (evt.target.classList.contains("btnPrograma")) {
+      const producto = evt.target.closest(".box");
+      leerDatosProgramas(producto, programas);
+    } 
   }
 
-  function leerDatosProducto(item, programas) {
+  function leerDatosAccesorio(item) {
     const imgProducto = item.querySelector(".imgProducto");
     const infoProducto = {
       imagen: imgProducto ? imgProducto.src : "../img/no_image.png",
@@ -230,69 +235,6 @@ document.addEventListener("DOMContentLoaded", function () {
   vaciarCarritoBtn.addEventListener("click", vaciarCarrito);
   contenedorCarrito.addEventListener("click", eliminarProducto);
 
-  function mostrarProductos(programas) {
-    listaAccesorios.innerHTML = programas
-      .map((programa) => `<li>${programa.nombre} - ${programa.precio}</li>`)
-      .join("");
-  }
-
-  function agregarProductoAlCarrito(evt, programas) {
-    if (evt.target.tagName === "LI") {
-      const nombreProducto = evt.target.innerText.split(" - ")[0];
-      const producto = programas.find((p) => p.nombre === nombreProducto);
-
-      if (producto) {
-        agregarAlCarrito(producto);
-        actualizarCarrito();
-      }
-    }
-  }
-
-  function agregarAlCarrito(producto) {
-    const productoEnCarrito = articulosCarrito.find(
-      (item) => item.nombre === producto.nombre
-    );
-
-    if (productoEnCarrito) {
-      productoEnCarrito.cantidad++;
-    } else {
-      articulosCarrito.push({
-        nombre: producto.nombre,
-        precio: producto.precio,
-        cantidadHoras: 1, // Puedes cambiar estos valores iniciales según tus necesidades
-      });
-    }
-  }
-
-  function actualizarCarrito() {
-    limpiarCarrito();
-
-    articulosCarrito.forEach((item) => {
-      const fila = document.createElement("tr");
-      const imagenTd = document.createElement("td");
-      const imagen = document.createElement("img");
-      imagen.src = "../img/no_image.png";
-      fila.innerHTML = `
-        <td><img src="${item.imagenTd.appendChild(imagen)}" width="100" /></td>
-        <td>${item.nombre}</td>
-        <td>${item.precio}</td>
-        <td>${item.cantidad}</td>
-      `;
-      contenedorCarrito.appendChild(fila);
-    });
-  }
-
-  function limpiarCarrito() {
-    while (contenedorCarrito.firstChild) {
-      contenedorCarrito.removeChild(contenedorCarrito.firstChild);
-    }
-  }
-
-  vaciarCarritoBtn.addEventListener("click", () => {
-    articulosCarrito = [];
-    limpiarCarrito();
-  });
-
   function calcularTotalCarrito() {
     let total = 0;
 
@@ -320,6 +262,8 @@ document.addEventListener("DOMContentLoaded", function () {
     return total;
   }
 
+
   // Llamada a la función para calcular el total inicial al cargar la página
   calcularTotalCarrito();
+
 });
