@@ -222,9 +222,24 @@ document.addEventListener("DOMContentLoaded", function () {
     dibujarCarritoHTML();
   });
 
-  listaAccesorios.addEventListener("click", agregarProducto);
+  function eliminarProducto(evt) {
+    evt.preventDefault(); // Evitar que el enlace cause la navegación predeterminada
+    if (evt.target.classList.contains("borrar-producto")) {
+      const idProducto = evt.target.getAttribute("data-id");
+
+      // Filtrar los productos del carrito para excluir el que se va a eliminar
+      articulosCarrito = articulosCarrito.filter(
+        (producto) => producto.id !== idProducto
+      );
+
+      dibujarCarritoHTML();
+    }
+  }
+
+  //listaAccesorios.addEventListener("click", agregarProducto);
   vaciarCarritoBtn.addEventListener("click", vaciarCarrito);
   contenedorCarrito.addEventListener("click", eliminarProducto);
+
 
   function calcularTotalCarrito() {
     let total = 0;
@@ -253,18 +268,8 @@ document.addEventListener("DOMContentLoaded", function () {
     return total;
   }
 
+
   // Llamada a la función para calcular el total inicial al cargar la página
   calcularTotalCarrito();
-  function eliminarProducto(evt) {
-    if (evt.target.classList.contains("borrar-producto")) {
-      const idProducto = evt.target.getAttribute("data-id");
 
-      // Filtrar los productos del carrito para excluir el que se va a eliminar
-      articulosCarrito = articulosCarrito.filter(
-        (producto) => producto.id !== idProducto
-      );
-
-      dibujarCarritoHTML();
-    }
-  }
 });
