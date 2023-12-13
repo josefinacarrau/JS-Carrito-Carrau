@@ -27,12 +27,15 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .catch((error) => console.error("Error al cargar el archivo JSON:", error));
 
-  function agregarProducto(evt, programas, leerDatosProgramas) {
+  function agregarProducto(evt, programas) {
     if (evt.target.classList.contains("btnPrograma")) {
-      const programa = evt.target.closest(".box").dataset.programa;
-      const programaSeleccionado = programas.find((p) => p.nombre === programa);
+      const programas = evt.target.closest(".box");
+      const nombrePrograma = prog.querySelector(".tituloPrograma").textContent;
+      const programaSeleccionado = programas.find(
+        (p) => p.nombre === nombrePrograma
+      );
       if (programaSeleccionado) {
-        leerDatosProgramas(programaSeleccionado);
+        leerDatosProgramas(programaSeleccionado, programas);
         Swal.fire({
           icon: "success",
           title: "Producto agregado al carrito",
@@ -42,13 +45,14 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   }
-  console.log(evt.target.classList.contains("btnPrograma"));
 
   function leerDatosProgramas(programa) {
     const idPrograma = articulosCarrito.length + 1;
     const nombrePrograma = programa.nombre;
-    const precioPrograma = programa.subProductos[0].precio;
-
+    const precioPrograma =
+      programa.subProductos && programa.subProductos.length > 0
+        ? programa.subProductos[0].precio
+        : "0 UYU";
     const infoPrograma = {
       id: idPrograma,
       imagen: "../img/no_image.png",

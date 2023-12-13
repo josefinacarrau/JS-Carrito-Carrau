@@ -92,10 +92,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const contenedorCarrito = document.querySelector("#listaCarrito tbody");
   const vaciarCarritoBtn = document.querySelector("#vaciarCarrito");
   const comprarCarrito = document.querySelector("#comprarCarrito");
-  const carrito = document.querySelector("#carrito");
+  //const carrito = document.querySelector("#carrito");
 
-  // Introduzco el archivo JSON
-  fetch("../programas.json")
+  /*   // Introduzco el archivo JSON
+  fetch("../js/programas.json")
     .then((response) => {
       if (!response.ok) {
         throw new Error(`Error de red: ${response.status}`);
@@ -114,7 +114,11 @@ document.addEventListener("DOMContentLoaded", function () {
         );
       }
     })
-    .catch((error) => console.error("Error al cargar el archivo JSON:", error));
+    .catch((error) => console.error("Error al cargar el archivo JSON:", error)); */
+
+  listaAccesorios.addEventListener("click", function (evt) {
+    agregarProducto(evt);
+  });
 
   function agregarProducto(evt, programas) {
     if (evt.target.classList.contains("btnArticulo")) {
