@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .catch((error) => console.error("Error al cargar el archivo JSON:", error));
 
-  function agregarProducto(evt,programas) {
+  function agregarProducto(evt, programas) {
     if (evt.target.classList.contains("btnArticulo")) {
       const producto = evt.target.closest(".cardProductos");
       leerDatosAccesorio(producto, programas);
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (evt.target.classList.contains("btnPrograma")) {
       const producto = evt.target.closest(".box");
       leerDatosProgramas(producto, programas);
-    } 
+    }
   }
 
   function leerDatosAccesorio(item) {
@@ -222,10 +222,19 @@ document.addEventListener("DOMContentLoaded", function () {
     if (evt.target.classList.contains("borrar-producto")) {
       const idProducto = evt.target.getAttribute("data-id");
 
-      // Filtrar los productos del carrito para excluir el que se va a eliminar
-      articulosCarrito = articulosCarrito.filter(
-        (producto) => producto.id !== idProducto
+      // Encontrar el índice del producto en el carrito
+      const productoIndex = articulosCarrito.findIndex(
+        (producto) => producto.id === idProducto
       );
+
+      if (productoIndex !== -1) {
+        // Reducir la cantidad en 1 o eliminar el producto si la cantidad es 1
+        if (articulosCarrito[productoIndex].cantidad > 1) {
+          articulosCarrito[productoIndex].cantidad -= 1;
+        } else {
+          articulosCarrito.splice(productoIndex, 1);
+        }
+      }
 
       dibujarCarritoHTML();
     }
@@ -262,8 +271,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return total;
   }
 
-
   // Llamada a la función para calcular el total inicial al cargar la página
   calcularTotalCarrito();
-
 });
