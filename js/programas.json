@@ -1,5 +1,4 @@
-{
-  "programas": [
+ [
     {
       "sku": 1,
       "nombre": "Programas para niños",
@@ -62,14 +61,14 @@
       "imagen": "../img/Nin;asHockey.jpg",
       "subProductos": [
         {
-          "sku": 101,
+          "sku": 10,
           "subSku": "3.1",
           "nombre": "Básico",
           "precio": 20500,
           "porHora": false
         },
         {
-          "sku": 1,
+          "sku": 11,
           "subSku": "3.2",
           "nombre": "Avanzadas",
           "precio": 2500,
@@ -99,4 +98,3 @@
       ]
     }
   ]
-}
