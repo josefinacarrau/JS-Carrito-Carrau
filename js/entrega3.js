@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let articulosCarrito = [];
 
   const listaAccesorios = document.querySelector("#listaAccesorios");
-  const listaProgramas = document.querySelector("#listaProgramas");
+  //const listaProgramas = document.querySelector("#listaProgramas");
   const contenedorCarrito = document.querySelector("#listaCarrito tbody");
   const vaciarCarritoBtn = document.querySelector("#vaciarCarrito");
   const comprarCarrito = document.querySelector("#comprarCarrito");
@@ -180,17 +180,49 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function vaciarCarrito() {
-    while (contenedorCarrito.firstChild) {
-      contenedorCarrito.removeChild(contenedorCarrito.firstChild);
-    }
-    articulosCarrito = [];
-    sincronizarStorage();
-    calcularTotalCarrito();
+  // Evento de Vaciar Carrito, dispara un SweetAlert
+  vaciarCarritoBtn.addEventListener("click", popUpVaciarCarrito);
+
+  function popUpVaciarCarrito() {
     Swal.fire({
-      icon: "success",
-      title: "¡Carrito vaciado!",
-      text: "El carrito fue vaciado con exito.",
+      title: "¿Estás seguro?",
+      text: "Tenés productos en el carrito.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Aceptar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      //console.log("Resultado de SweetAlert:", result);
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Carrito vaciado",
+          text: "Se eliminaron los productos del carrito.",
+          icon: "success",
+        }).then((result) => {
+          //console.log("Resultado del segundo SweetAlert:", result);
+          if (result.isConfirmed) {
+            //console.log("Ejecutando vaciarCarrito");
+            function vaciarCarrito() {
+              // Limpiar el contenido del contenedorCarrito
+              while (contenedorCarrito.firstChild) {
+                contenedorCarrito.removeChild(contenedorCarrito.firstChild);
+              }
+              // Reiniciar el array de articulosCarrito
+              articulosCarrito = [];
+              // Sincronizar con el almacenamiento local
+              sincronizarStorage();
+              // Recalcular el total del carrito
+              calcularTotalCarrito();
+            }
+            vaciarCarrito();
+          }
+        });
+      } else {
+        // No es necesario manejar el caso de "Cancelar" aquí, ya que no queremos ejecutar vaciarCarrito en ese caso.
+        //console.log("No se ejecutó vaciarCarrito");
+      }
     });
   }
 
