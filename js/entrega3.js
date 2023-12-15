@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   let articulosCarrito = [];
 
-  //Introduczo archivo JSON
+  // Introduzco archivo JSON
   fetch("../js/articulos.json")
     .then((response) => {
       if (!response.ok) {
@@ -19,13 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   const contenedorAccesorios = document.querySelector("#contenedorAccesorios");
-  const botonesAgregar = document.querySelectorAll(".btnArticulo");
+  let botonesAgregar = document.querySelectorAll(".btnArticulo");
   const contenedorCarrito = document.querySelector("#listaCarrito tbody");
   const vaciarCarritoBtn = document.querySelector("#vaciarCarrito");
   const comprarCarrito = document.querySelector("#comprarCarrito");
-
-  //const numerito = document.querySelector("#numerito");
-  //const carrito = document.querySelector("#carrito");
 
   function cargarAccesorios(articulosSeleccionados) {
     contenedorAccesorios.innerHTML = "";
@@ -33,33 +30,38 @@ document.addEventListener("DOMContentLoaded", function () {
       const div = document.createElement("div");
       div.classList.add("col-xl-3", "col-md-3", "col-sm-6");
       div.innerHTML = `
-      <div class="cardProductos">
-        <img src="${obtenerImagen(producto)}" alt="${
+        <div class="cardProductos">
+          <img src="${obtenerImagen(producto)}" alt="${
         producto.titulo
       }" class="card-img-top imgProducto" id="productGrip"/>
-        <div class="cardBody">
-          <h3 class="h3Carrito">${producto.titulo}</h3>
-          <div class="contenedorColores">
-            ${generarColores(producto.imagen)}
+          <div class="cardBody">
+            <h3 class="h3Carrito">${producto.titulo}</h3>
+            <div class="contenedorColores">
+              ${generarColores(producto.imagen)}
+            </div>
+            <p class="price">$${producto.precio}</p>
+            <button class="btn btnCarrito btnArticulo" data-id="${
+              producto.id
+            }">Agregar al carrito</button>
           </div>
-          <p class="price">$${producto.precio}</p>
-          <button class="btn btnCarrito btnArticulo" data-id="${
-            producto.id
-          }">Agregar al carrito</button>
         </div>
-      </div>
-    `;
+      `;
       contenedorAccesorios.appendChild(div);
     });
     actualizarBotonesAgregar();
   }
 
   function obtenerImagen(producto) {
-    if (producto.imagen instanceof Object) {
-      // Si la imagen es un objeto, obtenemos la primera propiedad como la imagen
+    if (producto.id === 1 || producto.id === 3 || producto.id === 5) {
+      // Artículos con id 1, 3 o 5 tienen una estructura de imagen diferente
+      const primerColor = Object.keys(producto.imagen)[0];
+      return producto.imagen[primerColor];
+    } else if (producto.imagen instanceof Object) {
+      // Si la imagen es un objeto y no es un artículo especial, obtenemos la primera propiedad como la imagen
       const primerColor = Object.keys(producto.imagen)[0];
       return producto.imagen[primerColor];
     } else {
+      // Si la imagen no es un objeto, simplemente devolvemos la ruta de la imagen
       return producto.imagen;
     }
   }
@@ -83,30 +85,31 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   contenedorAccesorios.addEventListener("click", function (evt) {
-    agregarProducto(evt);
+    if (evt.target.classList.contains("btnArticulo")) {
+      agregarProducto(evt);
+    }
   });
 
   function agregarProducto(evt) {
-    if (evt.target.classList.contains("btnArticulo")) {
-      const producto = evt.target.closest(".cardProductos");
-      //console.log("Selected Product:", producto);
-      leerDatosAccesorio(producto);
-    }
+    evt.stopPropagation(); // Evita la propagación del evento para que no se dispare en el contenedorAccesorios
+    const producto = evt.target.closest(".cardProductos");
+    leerDatosAccesorio(producto);
   }
 
   function leerDatosAccesorio(item) {
     const imgProducto = item.querySelector(".imgProducto");
     const infoProducto = {
-      imagen: imgProducto ? imgProducto.src : "../img/no_image.png",
+      imagen: imgProducto ? imgProducto.src : "./img/no_image.png",
       nombre: item.querySelector("h3").textContent,
       precio: item.querySelector(".price").textContent,
-      id: item.querySelector("button").getAttribute("data-id"),
+      id: parseInt(item.querySelector("button").getAttribute("data-id")), // Parse id as integer
       cantidad: 1,
     };
+  
     const productoExistenteIndex = articulosCarrito.findIndex(
       (prod) => prod.id === infoProducto.id
     );
-
+  
     if (productoExistenteIndex !== -1) {
       // Si el producto ya existe en el carrito, simplemente incrementa la cantidad en 1
       articulosCarrito[productoExistenteIndex].cantidad += 1;
@@ -114,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Si el producto no está en el carrito, agrégalo con cantidad inicial de 1
       articulosCarrito.push(infoProducto);
     }
-
+  
     dibujarCarritoHTML();
   }
 
@@ -125,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const fila = document.createElement("tr");
       fila.innerHTML = `
         <td><img src="${producto.imagen}" width="100" /></td>
-        <td>${producto.nombre}</td>
+        <td>${producto.titulo}</td>
         <td>${producto.precio}</td>
         <td>${producto.cantidad}</td>
         <td><a href="#" class="borrar-producto" data-id="${producto.id}">❌</a></td>
@@ -254,7 +257,7 @@ document.addEventListener("DOMContentLoaded", function () {
     articulosCarrito.forEach((producto) => {
       // Asegurarse de que el precio sea un número antes de sumarlo
       const precioNumerico = parseFloat(
-        producto.precio.replace("$", "").replace(",", "")
+        String(producto.precio).replace("$", "").replace(",", "")
       );
 
       if (!isNaN(precioNumerico)) {
@@ -278,7 +281,7 @@ document.addEventListener("DOMContentLoaded", function () {
   calcularTotalCarrito();
 });
 
-/* //-------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------
 //MODIFICACION DE IMAGENES SEGUN COLOR SELECCIONADO
 // Función para cambiar la imagen de un elemento
 function cambiarImagen(elemento, src, alt) {
@@ -287,83 +290,89 @@ function cambiarImagen(elemento, src, alt) {
 }
 
 // Function to handle color box click
-function handleColorBoxClick(colorBox, imgElement, src, alt) {
+function handleColorBoxClick(colorBox, imgElement, productData, color) {
   colorBox.addEventListener("click", function () {
-    cambiarImagen(imgElement, src, alt);
+    const colorImage = productData.imagen[color.toLowerCase()];
+    cambiarImagen(imgElement, colorImage, `${productData.titulo} ${color}`);
   });
 }
 
+// Other color box click functions remain unchanged...
+
 // Grip product
 let productGripImg = document.getElementById("productGrip");
+let gripProductData = articulosCarrito.find((product) => product.id === 1);
 
 handleColorBoxClick(
   document.querySelector(".verde"),
   productGripImg,
-  "../img/GripVerde.jpg",
-  "Grip Verde"
+  gripProductData,
+  "Verde"
 );
 handleColorBoxClick(
   document.querySelector(".azul"),
   productGripImg,
-  "../img/GripAzul.jpg",
-  "Grip Azul"
+  gripProductData,
+  "Azul"
 );
 handleColorBoxClick(
   document.querySelector(".rojo"),
   productGripImg,
-  "../img/GripRojo.jpg",
-  "Grip Rojo"
+  gripProductData,
+  "Rojo"
 );
 handleColorBoxClick(
   document.querySelector(".amarillo"),
   productGripImg,
-  "../img/GripAmarillo.jpg",
-  "Grip Amarillo"
+  gripProductData,
+  "Amarillo"
 );
 
 // Guantes product
 let productGuanteImg = document.getElementById("productGuante");
+let guanteProductData = articulosCarrito.find((product) => product.id === 3);
 
 handleColorBoxClick(
   document.querySelector(".aqua"),
   productGuanteImg,
-  "../img/GuanteAqua.jpg",
-  "Guante Aqua"
+  guanteProductData,
+  "Aqua"
 );
 handleColorBoxClick(
   document.querySelector(".fuchsia"),
   productGuanteImg,
-  "../img/GuanteFucsia.jpg",
-  "Guante Fucsia"
+  guanteProductData,
+  "Fuchsia"
 );
 handleColorBoxClick(
   document.querySelector(".negro"),
   productGuanteImg,
-  "../img/GuanteNegro.jpg",
-  "Guante Negro"
+  guanteProductData,
+  "Negro"
 );
 
 // Tabla product
 let productTablaImg = document.getElementById("productTabla");
+let tablaProductData = articulosCarrito.find((product) => product.id === 5);
 
 handleColorBoxClick(
   document.querySelector(".blanca"),
   productTablaImg,
-  "../img/TablaEntrenadorBlanca.jpg",
-  "Tabla Entrenador Blanca"
+  tablaProductData,
+  "Blanca"
 );
 handleColorBoxClick(
   document.querySelector(".fuchsia2"),
   productTablaImg,
-  "../img/TablaEntrenadorFucsia.jpg",
-  "Tabla Entrenador Fucsia"
+  tablaProductData,
+  "Fuchsia"
 );
 handleColorBoxClick(
   document.querySelector(".verde2"),
   productTablaImg,
-  "../img/TablaEntrenadorVerde.jpg",
-  "Tabla Entrenador Verde"
-); */
+  tablaProductData,
+  "Verde"
+);
 
 //---------------------------------------------------------------------------------
 // DARK MODE
