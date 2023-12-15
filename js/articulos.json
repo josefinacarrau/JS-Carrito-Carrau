@@ -41,7 +41,7 @@
     "titulo": "Tabla Entrenador",
     "imagen": {
       "Verde": "../img/TablaEntrenadorVerde.jpg",
-      "Fuchsia": "../img/TablaENtrenadorFucsia.jpg",
+      "Fuchsia": "../img/TablaEntrenadorFucsia.jpg",
       "Blanco": "../img/TablaEntrenadorBlanco.jpg"
     },
     "precio": 690,
