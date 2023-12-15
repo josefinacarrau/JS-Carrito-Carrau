@@ -1,0 +1,64 @@
+[
+    {
+        "id": 1,
+        "titulo": "Grip",
+        "imagen": {
+            "Verde": "../img/gripVerde.jpg",
+            "Rojo": "../img/gripRojo.jpg",
+            "Azul": "../img/gripAzul.jpg",
+            "Amarillo": "../img/gripAmarillo.jpg"
+        },
+        "precio": 650
+    },
+
+    {
+        "id": 2,
+        "titulo": "Bocha",
+        "imagen": "../img/Bocha.jpg",
+        "precio": 190
+    },
+    {
+        "id": 3,
+        "titulo": "Guante",
+        "imagen": {
+            "Aqua": "../img/guanteAqua.jpg",
+            "Fuchsia": "../img/guanteFucsia.jpg",
+            "Negro": "../img/guanteNegro.jpg"
+        },
+        "precio": 650
+    },
+    {
+        "id": 4,
+        "titulo": "Tarjetas de árbitro",
+        "imagen": "../img/TarjetasArbitro.jpg",
+        "precio": 300
+    },
+    {
+        "id": 5,
+        "titulo": "Tablra Entrenador",
+        "imagen": {
+            "Verde": "../img/TablaEntrenadorVerde.jpg",
+            "Fuchsia": "../img/TablaENtrenadorFucsia.jpg",
+            "Blanco": "../img/TablaEntrenadorBlanco.jpg"
+        },
+        "precio": 690
+    },
+    {
+        "id": 6,
+        "titulo": "Llaveros",
+        "imagen": "../img/Llavero.jpg",
+        "precio": 250
+    },
+    {
+        "id": 7,
+        "titulo": "Silbato",
+        "imagen": "../img/Silbato.jpg",
+        "precio": 200
+    },
+    {
+        "id": 8,
+        "titulo": "Máscara",
+        "imagen": "../img/Mascara.jpg",
+        "precio": 1690
+    }
+]

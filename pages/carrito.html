@@ -69,11 +69,10 @@
 
     <!-- Script de JS -->
     <script src="../js/entrega3.js" defer></script>
-    <script src="../js/1.js" defer></script>
 
     <title>Cimarronas Masterclass - Carrito</title>
   </head>
-  <body>
+  <body class="dark-mode-off">
     <!-- Comienzo del navegador -->
     <header>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -81,6 +80,15 @@
           <a href="../index.html"
             ><img class="logo" src="../img/logo.jpeg" alt="Logo"
           /></a>
+         <!--  <button class="btnHeader" id="darkColorMode">
+            <i class="fas fa-moon"></i>
+            <p>Dark Mode</p>
+          </button>
+          <button class="btnHeader" id="lightMode">
+            <i class="fas fa-sun"></i>
+            <p>Light Mode</p>
+          </button> -->
+
           <button
             class="navbar-toggler"
             type="button"
@@ -141,6 +149,11 @@
                     id="iconCarrito"
                     style="color: rgb(103, 195, 222)"
                   ></i>
+<!--                   <div class="cerrado">
+                    <div class="numerito">
+                      <div><p id="numerito">0</p></div>
+                    </div>
+                  </div> -->
                 </div>
               </li>
             </ul>
@@ -160,7 +173,7 @@
 
       <!-- Parte central -->
       <section class="container-fluid index carrito">
-        <div class="row precio">
+        <!--         <div class="row precio">
           <h2 class="h2Color">PROGRAMAS</h2>
           <hr class="lineaCeleste" />
         </div>
@@ -474,7 +487,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div class="row precio">
           <h2 class="h2Color">ARTÍCULOS DE VENTA</h2>
@@ -483,9 +496,11 @@
 
         <div
           class="row container-fluid d-flex justify-content"
-          id="listaAccesorios"
+          id="contenedorAccesorios"
         >
-          <div class="col-xl-3 col-md-3 col-sm-6">
+        <!-- Aca se inserta mi codigo DINAMICO desde JS -->
+
+         <!--  <div class="col-xl-3 col-md-3 col-sm-6">
             <div class="cardProductos">
               <img
                 src="../img/GripVerde.jpg"
@@ -632,8 +647,9 @@
                 </button>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
+
 
         <div id="carrito">
           <h2>Carrito</h2>
@@ -657,9 +673,6 @@
             <button class="btn btnCarrito" id="comprarCarrito" data-id="101">
               Comprar
             </button>
-            <!--             <button class="btn btnCarrito" id="modificarCarrito" data-id="101">
-              Modificar carrito
-            </button> -->
           </div>
         </div>
       </section>

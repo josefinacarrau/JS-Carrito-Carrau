@@ -1,3 +1,10 @@
+/****** DARK MODE ******/
+  .dark-mode {
+    transition: background-color 0.3s, color 0.3s;
+    background-color: $dark-color;
+    color: white;
+  }
+
 .carrito {
   .box {
     background-color: #ffffff;
@@ -212,48 +219,49 @@
   right: 1rem;
   font-size: 4.6rem;
   background: white;
-  padding: .5rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   border-radius: 1rem;
   box-shadow: 0px 0px 10px #b1b1b1;
   cursor: pointer;
   visibility: visible;
   opacity: 1;
-  transition: opacity .3s linear;
+  transition: opacity 0.3s linear;
 
   &.cerrado {
-      visibility: hidden;
-      opacity: 0;
-      transition: visibility 0s .3s, opacity .3s linear;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.3s, opacity 0.3s linear;
   }
 
   .numerito {
-      position: absolute;
-      top: -1rem;
-      left: -1rem;
-      background: $colorBase;
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+    background: $colorBase;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-      #numerito {
-          &.shake {
-              -webkit-animation: shake .4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-                      animation: shake .4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-          }
+    #numerito {
+      &.shake {
+        -webkit-animation: shake 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+          both;
+        animation: shake 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
       }
+    }
 
-      p {
-          font-size: 1.4rem;
-          color: white;
-          margin: 0;
-          line-height: 1;
-      }
+    p {
+      font-size: 1.4rem;
+      color: white;
+      margin: 0;
+      line-height: 1;
+    }
   }
 
   i {
-      color: $colorBase;
+    color: $colorBase;
   }
 }

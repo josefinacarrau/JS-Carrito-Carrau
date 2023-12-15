@@ -1,3 +1,285 @@
+//------------------------------------------------------------------------------------------------
+document.addEventListener("DOMContentLoaded", function () {
+  let articulosCarrito = [];
+
+  //Introduczo archivo JSON
+  fetch("../js/articulos.json")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Error al cargar el archivo JSON: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      articulosCarrito = data;
+      cargarAccesorios(articulosCarrito);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
+  const contenedorAccesorios = document.querySelector("#contenedorAccesorios");
+  const botonesAgregar = document.querySelectorAll(".btnArticulo");
+  const contenedorCarrito = document.querySelector("#listaCarrito tbody");
+  const vaciarCarritoBtn = document.querySelector("#vaciarCarrito");
+  const comprarCarrito = document.querySelector("#comprarCarrito");
+
+  //const numerito = document.querySelector("#numerito");
+  //const carrito = document.querySelector("#carrito");
+
+  function cargarAccesorios(articulosSeleccionados) {
+    contenedorAccesorios.innerHTML = "";
+    articulosSeleccionados.forEach((producto) => {
+      const div = document.createElement("div");
+      div.classList.add("col-xl-3", "col-md-3", "col-sm-6");
+      div.innerHTML = `
+      <div class="cardProductos">
+        <img src="${obtenerImagen(producto)}" alt="${
+        producto.titulo
+      }" class="card-img-top imgProducto" id="productGrip"/>
+        <div class="cardBody">
+          <h3 class="h3Carrito">${producto.titulo}</h3>
+          <div class="contenedorColores">
+            ${generarColores(producto.imagen)}
+          </div>
+          <p class="price">$${producto.precio}</p>
+          <button class="btn btnCarrito btnArticulo" data-id="${
+            producto.id
+          }">Agregar al carrito</button>
+        </div>
+      </div>
+    `;
+      contenedorAccesorios.appendChild(div);
+    });
+    actualizarBotonesAgregar();
+  }
+
+  function obtenerImagen(producto) {
+    if (producto.imagen instanceof Object) {
+      // Si la imagen es un objeto, obtenemos la primera propiedad como la imagen
+      const primerColor = Object.keys(producto.imagen)[0];
+      return producto.imagen[primerColor];
+    } else {
+      return producto.imagen;
+    }
+  }
+
+  function generarColores(imagenes) {
+    if (imagenes instanceof Object) {
+      return Object.keys(imagenes)
+        .map((color) => `<div class="colorBox ${color.toLowerCase()}"></div>`)
+        .join("");
+    } else {
+      return "";
+    }
+  }
+
+  function actualizarBotonesAgregar() {
+    botonesAgregar = document.querySelectorAll(".btnArticulo");
+
+    botonesAgregar.forEach((boton) => {
+      boton.addEventListener("click", agregarProducto);
+    });
+  }
+
+  contenedorAccesorios.addEventListener("click", function (evt) {
+    agregarProducto(evt);
+  });
+
+  function agregarProducto(evt) {
+    if (evt.target.classList.contains("btnArticulo")) {
+      const producto = evt.target.closest(".cardProductos");
+      //console.log("Selected Product:", producto);
+      leerDatosAccesorio(producto);
+    }
+  }
+
+  function leerDatosAccesorio(item) {
+    const imgProducto = item.querySelector(".imgProducto");
+    const infoProducto = {
+      imagen: imgProducto ? imgProducto.src : "../img/no_image.png",
+      nombre: item.querySelector("h3").textContent,
+      precio: item.querySelector(".price").textContent,
+      id: item.querySelector("button").getAttribute("data-id"),
+      cantidad: 1,
+    };
+    const productoExistenteIndex = articulosCarrito.findIndex(
+      (prod) => prod.id === infoProducto.id
+    );
+
+    if (productoExistenteIndex !== -1) {
+      // Si el producto ya existe en el carrito, simplemente incrementa la cantidad en 1
+      articulosCarrito[productoExistenteIndex].cantidad += 1;
+    } else {
+      // Si el producto no está en el carrito, agrégalo con cantidad inicial de 1
+      articulosCarrito.push(infoProducto);
+    }
+
+    dibujarCarritoHTML();
+  }
+
+  function dibujarCarritoHTML() {
+    limpiarCarrito();
+
+    articulosCarrito.forEach((producto) => {
+      const fila = document.createElement("tr");
+      fila.innerHTML = `
+        <td><img src="${producto.imagen}" width="100" /></td>
+        <td>${producto.nombre}</td>
+        <td>${producto.precio}</td>
+        <td>${producto.cantidad}</td>
+        <td><a href="#" class="borrar-producto" data-id="${producto.id}">❌</a></td>
+      `;
+      contenedorCarrito.appendChild(fila);
+    });
+
+    sincronizarStorage();
+    calcularTotalCarrito();
+  }
+
+  function limpiarCarrito() {
+    while (contenedorCarrito.firstChild) {
+      contenedorCarrito.removeChild(contenedorCarrito.firstChild);
+    }
+  }
+
+  // Evento de Vaciar Carrito, dispara un SweetAlert
+  vaciarCarritoBtn.addEventListener("click", popUpVaciarCarrito);
+
+  function popUpVaciarCarrito() {
+    if (articulosCarrito.length === 0) {
+      // If the cart is already empty, show a warning alert
+      Swal.fire({
+        title: "¡Atención!",
+        text: "El carrito ya está vacío.",
+        icon: "warning",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "Aceptar",
+      });
+    } else {
+      // If there are items in the cart, show the confirmation alert
+      Swal.fire({
+        title: "¿Estás seguro?",
+        text: "Tenés productos en el carrito.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar",
+        cancelButtonText: "Cancelar",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Carrito vaciado",
+            text: "Se eliminaron los productos del carrito.",
+            icon: "success",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              function vaciarCarrito() {
+                while (contenedorCarrito.firstChild) {
+                  contenedorCarrito.removeChild(contenedorCarrito.firstChild);
+                }
+                articulosCarrito = [];
+                sincronizarStorage();
+                calcularTotalCarrito();
+              }
+              vaciarCarrito();
+            }
+          });
+        } else {
+          // No es necesario manejar el caso de "Cancelar" aquí.
+        }
+      });
+    }
+  }
+
+  comprarCarrito.addEventListener("click", function () {
+    if (articulosCarrito.length > 0) {
+      // Si el carrito tiene productos, mostrar alerta de compra realizada con éxito
+      Swal.fire({
+        icon: "success",
+        title: "¡Compra realizada con éxito!",
+        text: "Gracias por tu compra.",
+      });
+    } else {
+      // Si el carrito está vacío, mostrar alerta de carrito vacío
+      Swal.fire({
+        icon: "warning",
+        title: "¡Carrito vacío!",
+        text: "Agrega productos al carrito antes de comprar.",
+      });
+    }
+  });
+
+  function sincronizarStorage() {
+    localStorage.setItem("carrito", JSON.stringify(articulosCarrito));
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    articulosCarrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    dibujarCarritoHTML();
+  });
+
+  function eliminarProducto(evt) {
+    evt.preventDefault(); // Evitar que el enlace cause la navegación predeterminada
+    if (evt.target.classList.contains("borrar-producto")) {
+      const idProducto = evt.target.getAttribute("data-id");
+
+      // Encontrar el índice del producto en el carrito
+      const productoIndex = articulosCarrito.findIndex(
+        (producto) => producto.id === idProducto
+      );
+
+      if (productoIndex !== -1) {
+        // Reducir la cantidad en 1 o eliminar el producto si la cantidad es 1
+        if (articulosCarrito[productoIndex].cantidad > 1) {
+          articulosCarrito[productoIndex].cantidad -= 1;
+        } else {
+          articulosCarrito.splice(productoIndex, 1);
+        }
+      }
+
+      dibujarCarritoHTML();
+    }
+  }
+
+  //contenedorAccesorios.addEventListener("click", agregarProducto);
+  vaciarCarritoBtn.addEventListener("click", vaciarCarrito);
+  contenedorCarrito.addEventListener("click", eliminarProducto);
+
+  function calcularTotalCarrito() {
+    let total = 0;
+
+    // Iterar sobre los productos en el carrito y sumar el precio total
+    articulosCarrito.forEach((producto) => {
+      // Asegurarse de que el precio sea un número antes de sumarlo
+      const precioNumerico = parseFloat(
+        producto.precio.replace("$", "").replace(",", "")
+      );
+
+      if (!isNaN(precioNumerico)) {
+        total += precioNumerico * producto.cantidad;
+      }
+    });
+
+    // Mostrar el total en algún lugar, por ejemplo, en un elemento con id "totalCarrito"
+    const totalCarritoElement = document.getElementById("totalCarrito");
+
+    if (totalCarritoElement) {
+      totalCarritoElement.innerHTML = `<p><strong>Total: $${total.toFixed(
+        2
+      )}</strong></p>`;
+    }
+
+    return total;
+  }
+
+  // Llamada a la función para calcular el total inicial al cargar la página
+  calcularTotalCarrito();
+});
+
+/* //-------------------------------------------------------------------------------------
+//MODIFICACION DE IMAGENES SEGUN COLOR SELECCIONADO
 // Función para cambiar la imagen de un elemento
 function cambiarImagen(elemento, src, alt) {
   elemento.setAttribute("src", src);
@@ -81,228 +363,46 @@ handleColorBoxClick(
   productTablaImg,
   "../img/TablaEntrenadorVerde.jpg",
   "Tabla Entrenador Verde"
-);
+); */
 
-//------------------------------------------------------------------------------------------------
-document.addEventListener("DOMContentLoaded", function () {
-  let articulosCarrito = [];
+//---------------------------------------------------------------------------------
+// DARK MODE
 
-  const listaAccesorios = document.querySelector("#listaAccesorios");
-  //const listaProgramas = document.querySelector("#listaProgramas");
-  const contenedorCarrito = document.querySelector("#listaCarrito tbody");
-  const vaciarCarritoBtn = document.querySelector("#vaciarCarrito");
-  const comprarCarrito = document.querySelector("#comprarCarrito");
-  //const carrito = document.querySelector("#carrito");
+/* const botonDarkMode = document.querySelector("#darkColorMode");
+const botonLightMode = document.querySelector("#lightMode");
+const body = document.body;
 
-/* // Introduzco el archivo JSON
-  fetch("../js/programas.json")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Error de red: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      // Verificar si la propiedad "programas" existe y es un arreglo
-      if (Array.isArray(data.programas)) {
-        listaAccesorios.addEventListener("click", function (evt) {
-          agregarProducto(evt, data.programas);
-        });
-      } else {
-        console.error(
-          "La propiedad programas no es un arreglo o no está definida en el JSON."
-        );
-      }
-    })
-    .catch((error) => console.error("Error al cargar el archivo JSON:", error));  */
+let darkMode = localStorage.getItem("dark-mode");
+let lightMode = localStorage.getItem("light-mode");
 
-  listaAccesorios.addEventListener("click", function (evt) {
-    agregarProducto(evt);
-  });
+function activarDarkMode() {
+  body.classList.add("dark-mode");
+  body.classList.remove("light-mode"); // Remove light mode class
+  localStorage.setItem("dark-mode", "activado");
+  localStorage.removeItem("light-mode"); // Remove light mode from storage
+}
 
-  function agregarProducto(evt) {
-    if (evt.target.classList.contains("btnArticulo")) {
-      const producto = evt.target.closest(".cardProductos");
-      leerDatosAccesorio(producto);
-    }
-  }
+function desactivarDarkMode() {
+  body.classList.remove("dark-mode");
+  body.classList.add("light-mode");
+  localStorage.setItem("light-mode", "activado");
+  localStorage.removeItem("dark-mode"); // Remove dark mode from storage
+}
 
-  function leerDatosAccesorio(item) {
-    const imgProducto = item.querySelector(".imgProducto");
-    const infoProducto = {
-      imagen: imgProducto ? imgProducto.src : "../img/no_image.png",
-      nombre: item.querySelector("h3").textContent,
-      precio: item.querySelector(".price").textContent,
-      id: item.querySelector("button").getAttribute("data-id"),
-      cantidad: 1,
-    };
-    const productoExistenteIndex = articulosCarrito.findIndex(
-      (prod) => prod.id === infoProducto.id
-    );
-
-    if (productoExistenteIndex !== -1) {
-      // Si el producto ya existe en el carrito, simplemente incrementa la cantidad en 1
-      articulosCarrito[productoExistenteIndex].cantidad += 1;
-    } else {
-      // Si el producto no está en el carrito, agrégalo con cantidad inicial de 1
-      articulosCarrito.push(infoProducto);
-    }
-
-    dibujarCarritoHTML();
-  }
-
-  function dibujarCarritoHTML() {
-    limpiarCarrito();
-
-    articulosCarrito.forEach((producto) => {
-      const fila = document.createElement("tr");
-      fila.innerHTML = `
-        <td><img src="${producto.imagen}" width="100" /></td>
-        <td>${producto.nombre}</td>
-        <td>${producto.precio}</td>
-        <td>${producto.cantidad}</td>
-        <td><a href="#" class="borrar-producto" data-id="${producto.id}">❌</a></td>
-      `;
-      contenedorCarrito.appendChild(fila);
-    });
-
-    sincronizarStorage();
-    calcularTotalCarrito();
-  }
-
-  function limpiarCarrito() {
-    while (contenedorCarrito.firstChild) {
-      contenedorCarrito.removeChild(contenedorCarrito.firstChild);
-    }
-  }
-
-  // Evento de Vaciar Carrito, dispara un SweetAlert
-  vaciarCarritoBtn.addEventListener("click", popUpVaciarCarrito);
-
-  function popUpVaciarCarrito() {
-    Swal.fire({
-      title: "¿Estás seguro?",
-      text: "Tenés productos en el carrito.",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Aceptar",
-      cancelButtonText: "Cancelar",
-    }).then((result) => {
-      //console.log("Resultado de SweetAlert:", result);
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: "Carrito vaciado",
-          text: "Se eliminaron los productos del carrito.",
-          icon: "success",
-        }).then((result) => {
-          //console.log("Resultado del segundo SweetAlert:", result);
-          if (result.isConfirmed) {
-            //console.log("Ejecutando vaciarCarrito");
-            function vaciarCarrito() {
-              // Limpiar el contenido del contenedorCarrito
-              while (contenedorCarrito.firstChild) {
-                contenedorCarrito.removeChild(contenedorCarrito.firstChild);
-              }
-              // Reiniciar el array de articulosCarrito
-              articulosCarrito = [];
-              // Sincronizar con el almacenamiento local
-              sincronizarStorage();
-              // Recalcular el total del carrito
-              calcularTotalCarrito();
-            }
-            vaciarCarrito();
-          }
-        });
-      } else {
-        // No es necesario manejar el caso de "Cancelar" aquí, ya que no queremos ejecutar vaciarCarrito en ese caso.
-        //console.log("No se ejecutó vaciarCarrito");
-      }
-    });
-  }
-
-  comprarCarrito.addEventListener("click", function () {
-    if (articulosCarrito.length > 0) {
-      // Si el carrito tiene productos, mostrar alerta de compra realizada con éxito
-      Swal.fire({
-        icon: "success",
-        title: "¡Compra realizada con éxito!",
-        text: "Gracias por tu compra.",
-      });
-    } else {
-      // Si el carrito está vacío, mostrar alerta de carrito vacío
-      Swal.fire({
-        icon: "warning",
-        title: "¡Carrito vacío!",
-        text: "Agrega productos al carrito antes de comprar.",
-      });
-    }
-  });
-
-  function sincronizarStorage() {
-    localStorage.setItem("carrito", JSON.stringify(articulosCarrito));
-  }
-
-  window.addEventListener("DOMContentLoaded", () => {
-    articulosCarrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    dibujarCarritoHTML();
-  });
-
-  function eliminarProducto(evt) {
-    evt.preventDefault(); // Evitar que el enlace cause la navegación predeterminada
-    if (evt.target.classList.contains("borrar-producto")) {
-      const idProducto = evt.target.getAttribute("data-id");
-
-      // Encontrar el índice del producto en el carrito
-      const productoIndex = articulosCarrito.findIndex(
-        (producto) => producto.id === idProducto
-      );
-
-      if (productoIndex !== -1) {
-        // Reducir la cantidad en 1 o eliminar el producto si la cantidad es 1
-        if (articulosCarrito[productoIndex].cantidad > 1) {
-          articulosCarrito[productoIndex].cantidad -= 1;
-        } else {
-          articulosCarrito.splice(productoIndex, 1);
-        }
-      }
-
-      dibujarCarritoHTML();
-    }
-  }
-
-  //listaAccesorios.addEventListener("click", agregarProducto);
-  vaciarCarritoBtn.addEventListener("click", vaciarCarrito);
-  contenedorCarrito.addEventListener("click", eliminarProducto);
-
-  function calcularTotalCarrito() {
-    let total = 0;
-
-    // Iterar sobre los productos en el carrito y sumar el precio total
-    articulosCarrito.forEach((producto) => {
-      // Asegurarse de que el precio sea un número antes de sumarlo
-      const precioNumerico = parseFloat(
-        producto.precio.replace("$", "").replace(",", "")
-      );
-
-      if (!isNaN(precioNumerico)) {
-        total += precioNumerico * producto.cantidad;
-      }
-    });
-
-    // Mostrar el total en algún lugar, por ejemplo, en un elemento con id "totalCarrito"
-    const totalCarritoElement = document.getElementById("totalCarrito");
-
-    if (totalCarritoElement) {
-      totalCarritoElement.innerHTML = `<p><strong>Total: $${total.toFixed(
-        2
-      )}</strong></p>`;
-    }
-
-    return total;
-  }
-
-  // Llamada a la función para calcular el total inicial al cargar la página
-  calcularTotalCarrito();
+botonDarkMode.addEventListener("click", () => {
+  darkMode = localStorage.getItem("dark-mode");
+  activarDarkMode();
 });
+
+botonLightMode.addEventListener("click", () => {
+  lightMode = localStorage.getItem("light-mode");
+  desactivarDarkMode();
+});
+
+// Initial check for dark mode
+if (darkMode === "activado") {
+  activarDarkMode();
+} else {
+  desactivarDarkMode();
+}
+ */

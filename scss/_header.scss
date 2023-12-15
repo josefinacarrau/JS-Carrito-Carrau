@@ -3,6 +3,29 @@ header {
     padding: 2px;
     height: 50px;
   }
+  .btnHeader {
+    padding: 2px 4px;
+    border-radius: 6px;
+    border: 1px solid $colorBase;
+    display:flex;
+    align-items: center;
+    p {
+      margin-bottom: 0;
+      margin-left: 4px;
+    }
+    i {
+      color: $colorBase;
+    }
+    &:hover {
+      background-color: $colorBase;
+      border: 2px solid white;
+      border-radius: 6px;
+      i {
+        color: white;
+      }
+    }
+    //  justify-content: flex-end;
+  }
   nav {
     div {
       .navbar-collapse {

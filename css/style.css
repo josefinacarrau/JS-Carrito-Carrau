@@ -248,6 +248,28 @@ header .logo {
   padding: 2px;
   height: 50px;
 }
+header .btnHeader {
+  padding: 2px 4px;
+  border-radius: 6px;
+  border: 1px solid rgb(103, 195, 222);
+  display: flex;
+  align-items: center;
+}
+header .btnHeader p {
+  margin-bottom: 0;
+  margin-left: 4px;
+}
+header .btnHeader i {
+  color: rgb(103, 195, 222);
+}
+header .btnHeader:hover {
+  background-color: rgb(103, 195, 222);
+  border: 2px solid white;
+  border-radius: 6px;
+}
+header .btnHeader:hover i {
+  color: white;
+}
 header nav div .navbar-collapse {
   flex-grow: unset !important; /* Desactivar el crecimiento flexible de la barra de navegación. El!important es una regla de prioridad que indica que esta declaración de estilo debe aplicarse incluso si existen otras reglas que intentan cambiar la propiedad.*/
 }
@@ -648,6 +670,13 @@ div .boxContacto h3 {
 }
 div .boxContacto .pregFrec {
   text-align: justify;
+}
+
+/****** DARK MODE ******/
+.dark-mode {
+  transition: background-color 0.3s, color 0.3s;
+  background-color: #1b0737;
+  color: white;
 }
 
 .carrito .box {
