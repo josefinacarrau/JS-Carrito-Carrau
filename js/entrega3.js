@@ -11,8 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return response.json();
     })
     .then((data) => {
-      articulosCarrito = data;
-      cargarAccesorios(articulosCarrito);
+      cargarAccesorios(data);
     })
     .catch((error) => {
       console.error(error);
@@ -100,24 +99,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const imgProducto = item.querySelector(".imgProducto");
     const infoProducto = {
       imagen: imgProducto ? imgProducto.src : "./img/no_image.png",
-      nombre: item.querySelector("h3").textContent,
+      titulo: item.querySelector("h3").textContent,
       precio: item.querySelector(".price").textContent,
-      id: parseInt(item.querySelector("button").getAttribute("data-id")), // Parse id as integer
+      id: String(item.querySelector("button").getAttribute("data-id")), // Convertir a cadena
       cantidad: 1,
     };
-  
+
     const productoExistenteIndex = articulosCarrito.findIndex(
       (prod) => prod.id === infoProducto.id
     );
-  
+
     if (productoExistenteIndex !== -1) {
-      // Si el producto ya existe en el carrito, simplemente incrementa la cantidad en 1
       articulosCarrito[productoExistenteIndex].cantidad += 1;
     } else {
-      // Si el producto no está en el carrito, agrégalo con cantidad inicial de 1
       articulosCarrito.push(infoProducto);
     }
-  
+
     dibujarCarritoHTML();
   }
 
@@ -224,17 +221,15 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function eliminarProducto(evt) {
-    evt.preventDefault(); // Evitar que el enlace cause la navegación predeterminada
+    evt.preventDefault();
     if (evt.target.classList.contains("borrar-producto")) {
       const idProducto = evt.target.getAttribute("data-id");
 
-      // Encontrar el índice del producto en el carrito
       const productoIndex = articulosCarrito.findIndex(
         (producto) => producto.id === idProducto
       );
 
       if (productoIndex !== -1) {
-        // Reducir la cantidad en 1 o eliminar el producto si la cantidad es 1
         if (articulosCarrito[productoIndex].cantidad > 1) {
           articulosCarrito[productoIndex].cantidad -= 1;
         } else {
