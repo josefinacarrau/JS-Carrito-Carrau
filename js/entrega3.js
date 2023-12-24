@@ -276,9 +276,13 @@ document.addEventListener("DOMContentLoaded", function () {
   calcularTotalCarrito();
 });
 
+
+
+
+
 //-------------------------------------------------------------------------------------
 //MODIFICACION DE IMAGENES SEGUN COLOR SELECCIONADO
-// Función para cambiar la imagen de un elemento
+/* // Función para cambiar la imagen de un elemento
 function cambiarImagen(elemento, src, alt) {
   elemento.setAttribute("src", src);
   elemento.setAttribute("alt", alt);
@@ -367,7 +371,7 @@ handleColorBoxClick(
   productTablaImg,
   tablaProductData,
   "Verde"
-);
+); */
 
 //---------------------------------------------------------------------------------
 // DARK MODE
